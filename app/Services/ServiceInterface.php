@@ -12,9 +12,11 @@ interface ServiceInterface
     public function get($id);
 
     /**
+     * @param $options
+     *
      * @return array
      */
-    public function getList();
+    public function getList(array $options = []);
 
     /**
      * @param array $data

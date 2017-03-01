@@ -23,9 +23,11 @@ abstract class Repository implements RepositoryInterface
     }
 
     /**
+     * @param $options
+     *
      * @return Model[]
      */
-    public function getList()
+    public function getList(array $options = [])
     {
         $model = $this->model;
         return $model::all();

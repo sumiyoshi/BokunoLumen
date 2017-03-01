@@ -15,7 +15,6 @@ abstract class Service implements ServiceInterface
      */
     protected $repo;
 
-
     /**
      * @var array
      */
@@ -36,11 +35,13 @@ abstract class Service implements ServiceInterface
     }
 
     /**
+     * @param $options
+     *
      * @return Model[]
      */
-    public function getList()
+    public function getList(array $options = [])
     {
-        return $this->repo->getList();
+        return $this->repo->getList($options);
     }
 
     /**
@@ -50,10 +51,7 @@ abstract class Service implements ServiceInterface
      */
     public function save(array $data, $id = null)
     {
-        $filesystem = new Filesystem\Filesystem();
-        $fileLoader = new Translation\FileLoader($filesystem, '');
-        $translator = new Translation\Translator($fileLoader, 'en_En');
-        $factory = new Validation\Factory($translator);
+        $factory = $this->validationFactory();
 
         $v = $factory->make($data, $this->rules);
         if ($v->fails()) {
@@ -97,5 +95,16 @@ abstract class Service implements ServiceInterface
     public function getErrors()
     {
         return $this->errors;
+    }
+
+    /**
+     * @return Validation\Factory
+     */
+    protected function validationFactory()
+    {
+        $filesystem = new Filesystem\Filesystem();
+        $fileLoader = new Translation\FileLoader($filesystem, BASE_PATH . '/resources/lang');
+        $translator = new Translation\Translator($fileLoader, env('APP_LOCALE'));
+        return new Validation\Factory($translator);
     }
 }

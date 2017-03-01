@@ -11,9 +11,11 @@ interface RepositoryInterface
     public function get($id);
 
     /**
+     * @param $options
+     *
      * @return mixed
      */
-    public function getList();
+    public function getList(array $options);
 
     /**
      * @param $id
