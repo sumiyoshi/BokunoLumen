@@ -14,3 +14,9 @@ php artisan migrate:refresh --seed
 ```
 php -S localhost:8000 -t ./public
 ```
+
+## test
+
+```
+php vendor/bin/phpunit tests/
+```

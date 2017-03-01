@@ -4,12 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Validation;
-use Illuminate\Filesystem;
-use Illuminate\Translation;
+use Illuminate\Database\Eloquent\Builder;
 
-
-class Model extends EloquentModel
+/**
+ * Class Model
+ * @package App\Models
+ *
+ * @method static find($id)
+ * @method static Builder where($string, $value)
+ * @method static create($params)
+ */
+abstract class Model extends EloquentModel implements ModelInterface
 {
     use SoftDeletes;
 

@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 
+require_once 'UsersTestSeeder.php';
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -11,14 +13,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')
-            ->insert(
-                [
-                    'name' => 'TestUser',
-                    'login_id' => 'admin',
-                    'mail' => 'sumiyoshi102@gmail.com',
-                    'password' => password_hash('password', PASSWORD_DEFAULT)
-                ]
-            );
+        if (env('APP_ENV') == 'testing') {
+            $this->call(UsersTestSeeder::class);
+        }
     }
 }
