@@ -1,0 +1,41 @@
+<?php
+
+namespace App\Services;
+
+use App\Models\Model;
+
+interface ServiceInterface
+{
+    /**
+     * @return Model
+     */
+    public function get($id);
+
+    /**
+     * @return array
+     */
+    public function getList();
+
+    /**
+     * @param array $data
+     * @param $id | null
+     * @return Model
+     */
+    public function save(array $data, $id = null);
+
+    /**
+     * @param $id
+     * @return int
+     */
+    public function delete($id);
+
+    /**
+     * @return Model
+     */
+    public function createEntity();
+
+    /**
+     * @return array
+     */
+    public function getErrors();
+}

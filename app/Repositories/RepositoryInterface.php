@@ -33,4 +33,9 @@ interface RepositoryInterface
      * @return mixed
      */
     public function delete($id);
+
+    /**
+     * @return mixed
+     */
+    public function createEntity();
 }

@@ -71,4 +71,12 @@ abstract class Repository implements RepositoryInterface
         $model = $this->model;
         return $model::destroy($id);
     }
+
+    /**
+     * @return Model
+     */
+    public function createEntity()
+    {
+        return new $this->model;
+    }
 }

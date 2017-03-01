@@ -2,12 +2,9 @@
 
 use App\Repositories\UsersRepository;
 use Illuminate\Support\Facades\Artisan;
-use Laravel\Lumen\Testing\DatabaseTransactions;
 
 class UsersRepositoryTest extends TestCase
 {
-    use DatabaseTransactions;
-
     /**
      * @var UsersRepository
      */
