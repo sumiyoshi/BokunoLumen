@@ -6,6 +6,7 @@
 
 
 @section('content')
+
     <a href="{{route('users_new')}}">new</a>
 
     @foreach($list as $user)

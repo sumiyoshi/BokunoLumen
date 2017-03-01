@@ -24,15 +24,15 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     ];
 
     /**
-     * @return $this
+     * @return array
      */
-    public function passwordHash()
+    public static function passwordHash($data)
     {
-        if ($this->password) {
-            $this->password = password_hash($this->password, PASSWORD_DEFAULT);
+        if (!empty($data['password'])) {
+            $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
         }
 
-        return $this;
+        return $data;
     }
 
     /**

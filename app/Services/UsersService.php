@@ -44,12 +44,10 @@ class UsersService extends Service
 
         if (is_null($id)) {
             /** @var User $model */
-            $model = $this->repo->create($data);
-            $model->passwordHash()->save();
+            $model = $this->repo->create(User::passwordHash($data));
         } else {
             /** @var User $model */
-            $model = $this->repo->update($id, $data);
-            $model->passwordHash()->save();
+            $model = $this->repo->update($id, User::passwordHash($data));
         }
 
         return $model;

@@ -17,8 +17,10 @@ class UsersController extends Controller
         $this->service = $service;
     }
 
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+        $request->session()->flash('status', 'Task was successful!');
+
         $list = $this->service->getList();
         return view('users.index', compact('list'));
     }

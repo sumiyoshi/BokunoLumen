@@ -4,7 +4,7 @@ $app->get('/', function () use ($app) {
     return $app->version();
 });
 
-$app->group(['middleware' => 'auth'], function () use ($app) {
+$app->group(['middleware' => ['auth']], function () use ($app) {
     #region users
     $app->get('/users', ['as' => 'users', 'uses' => 'UsersController@indexAction']);
     $app->get('/users/new', ['as' => 'users_new', 'uses' => 'UsersController@newAction']);
