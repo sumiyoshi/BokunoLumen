@@ -25,6 +25,8 @@ abstract class Service implements ServiceInterface
      */
     protected $errors = [];
 
+
+
     /**
      * @param $id
      * @return Model

@@ -31,36 +31,47 @@ class UsersController extends Controller
 
     public function newAction()
     {
-        $user = $this->service->createEntity();
-        return view('users.new', compact('user'));
+        return view('users.new', [
+            'user' => $this->service->createEntity(),
+            'errors' => []
+        ]);
     }
 
     public function createAction(Request $request)
     {
-        if ($this->service->save($request->all())) {
-
+        if ($model = $this->service->save($request->all())) {
+            return redirect()->route('users_show', ['id' => $model->id]);
         } else {
-
+            return view('users.new', [
+                'user' => $this->service->createEntity()->fill($request->except('password')),
+                'errors' => $this->service->getErrors()
+            ]);
         }
     }
 
     public function editAction($id)
     {
-        $user = $this->service->get($id);
-        return view('users.edit', compact('user'));
+        return view('users.edit', [
+            'user' => $this->service->get($id)->fill(['password' => '']),
+            'errors' => []
+        ]);
     }
 
     public function updateAction(Request $request, $id)
     {
-        if ($this->service->save($request->all(), $id)) {
-
+        if ($model = $this->service->save($request->all(), $id)) {
+            return redirect()->route('users_show', ['id' => $model->id]);
         } else {
-
+            return view('users.edit', [
+                'user' => $this->service->get($id)->fill(['password' => ''])->fill($request->except('password')),
+                'errors' => $this->service->getErrors()
+            ]);
         }
     }
 
     public function deleteAction($id)
     {
         $this->service->delete($id);
+        return redirect()->route('users');
     }
 }
