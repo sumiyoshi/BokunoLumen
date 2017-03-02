@@ -54,7 +54,7 @@ $app->singleton(
 |--------------------------------------------------------------------------
 */
 
-$app->register(App\Providers\RepositoryServiceProvider::class);
+$app->register(App\Providers\AppServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------

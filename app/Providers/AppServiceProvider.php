@@ -6,9 +6,9 @@ use App\Domain\Repositories;
 use App\Infrastructure\Domain\Repositories as InfrastructureRepositories;
 use Illuminate\Support\ServiceProvider;
 
-class RepositoryServiceProvider extends ServiceProvider
+class AppServiceProvider extends ServiceProvider
 {
-    private $repositories = [
+    private $register_list = [
         Repositories\UsersRepository::class => InfrastructureRepositories\EloquentUsersRepository::class,
 
     ];
@@ -29,7 +29,7 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        foreach ($this->repositories as $interface => $repository) {
+        foreach ($this->register_list as $interface => $repository) {
             $this->app->bind($interface, $repository);
         }
     }

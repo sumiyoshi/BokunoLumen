@@ -13,6 +13,9 @@ class EloquentUser extends EloquentModel
 
     protected $domain_model = User::class;
 
+    /**
+     * @var array
+     */
     protected $fillable = [
         'password',
         'mail',
