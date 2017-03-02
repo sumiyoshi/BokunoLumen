@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Infrastructure\Domain\Models;
+namespace Infrastructure\Domain\Models;
 
-use App\Domain\Models\User;
+use Domain\Models\User;
 
 class EloquentUser extends EloquentModel
 {

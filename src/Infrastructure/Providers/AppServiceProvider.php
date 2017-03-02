@@ -1,16 +1,15 @@
 <?php
 
-namespace App\Providers;
+namespace Infrastructure\Providers;
 
-use App\Domain\Repositories;
-use App\Infrastructure\Domain\Repositories as InfrastructureRepositories;
+use Domain\Repositories;
+use Infrastructure\Domain\Repositories as InfrastructureRepositories;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
     private $register_list = [
         Repositories\UsersRepository::class => InfrastructureRepositories\EloquentUsersRepository::class,
-
     ];
 
     /**

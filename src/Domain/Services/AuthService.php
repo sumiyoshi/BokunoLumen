@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Domain\Services;
+namespace Domain\Services;
 
-use App\Domain\Repositories\UsersRepository;
+use Domain\Repositories\UsersRepository;
 
 class AuthService extends Service
 {

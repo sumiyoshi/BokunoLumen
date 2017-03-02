@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Models;
+namespace Domain\Models;
 
 
 abstract class Model

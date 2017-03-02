@@ -40,7 +40,7 @@ $app->withEloquent();
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
-    App\Infrastructure\Exceptions\Handler::class
+    Infrastructure\Exceptions\Handler::class
 );
 
 $app->singleton(
@@ -54,7 +54,7 @@ $app->singleton(
 |--------------------------------------------------------------------------
 */
 
-$app->register(App\Providers\AppServiceProvider::class);
+$app->register(Infrastructure\Providers\AppServiceProvider::class);
 
 /*
 |--------------------------------------------------------------------------
@@ -83,7 +83,7 @@ $app->routeMiddleware([
 */
 
 $app->group(['namespace' => 'App\Http\Controllers'], function ($app) {
-    require __DIR__ . '/../routes/web.php';
+    require __DIR__ . '/../src/App/web.php';
 });
 
 return $app;

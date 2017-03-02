@@ -1,6 +1,6 @@
 <?php
 
-use App\Domain\Repositories\UsersRepository;
+use Domain\Repositories\UsersRepository;
 use Illuminate\Support\Facades\Artisan;
 
 class UsersRepositoryTest extends TestCase

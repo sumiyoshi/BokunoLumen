@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Infrastructure\Domain\Repositories;
+namespace Infrastructure\Domain\Repositories;
 
-use App\Infrastructure\Domain\Models\EloquentModel;
+use Infrastructure\Domain\Models\EloquentModel;
 
 /**
  * @property EloquentModel $eloquent

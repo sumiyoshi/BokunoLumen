@@ -1,6 +1,6 @@
 <?php
 
-use App\Domain\Services\UsersService;
+use Domain\Services\UsersService;
 use Illuminate\Support\Facades\Artisan;
 
 class UsersServiceTest extends TestCase
@@ -25,7 +25,7 @@ class UsersServiceTest extends TestCase
     {
         $model = $this->service->createEntity();
         $this->assertEquals($model->id, null);
-        $this->assertEquals($model instanceof \App\Domain\Models\User, true);
+        $this->assertEquals($model instanceof \Domain\Models\User, true);
     }
 
 }

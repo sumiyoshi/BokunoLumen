@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Domain\Services\AuthService;
+use Domain\Services\AuthService;
 use Illuminate\Http\Request;
 
 class AuthController extends Controller

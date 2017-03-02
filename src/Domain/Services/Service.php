@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Services;
+namespace Domain\Services;
 
 abstract class Service
 {

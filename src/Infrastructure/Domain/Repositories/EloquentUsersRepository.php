@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Infrastructure\Domain\Repositories;
+namespace Infrastructure\Domain\Repositories;
 
-use App\Domain\Models\User;
-use App\Domain\Repositories\UsersRepository;
-use App\Infrastructure\Domain\Models\EloquentUser;
+use Domain\Models\User;
+use Domain\Repositories\UsersRepository;
+use Infrastructure\Domain\Models\EloquentUser;
 
 class EloquentUsersRepository implements UsersRepository
 {

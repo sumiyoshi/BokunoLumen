@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Domain\Services;
+namespace Domain\Services;
 
-use App\Domain\Repositories\UsersRepository;
-use App\Domain\Models\User;
-
+use Domain\Repositories\UsersRepository;
+use Domain\Models\User;
 
 class UsersService extends Service
 {
