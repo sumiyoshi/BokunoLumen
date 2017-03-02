@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use App\Services\UsersService;
+use App\Domain\Services\UsersService;
 
 class Authenticate
 {

@@ -1,6 +1,6 @@
 <?php
 
-use App\Repositories\UsersRepository;
+use App\Domain\Repositories\UsersRepository;
 use Illuminate\Support\Facades\Artisan;
 
 class UsersRepositoryTest extends TestCase
@@ -30,7 +30,7 @@ class UsersRepositoryTest extends TestCase
 
     public function testList()
     {
-        $users = $this->repo->getList();
+        $users = $this->repo->getList([]);
         $this->assertEquals(count($users), 2);
     }
 

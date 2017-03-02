@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Domain\Repositories;
 
-interface RepositoryInterface
+interface UsersRepository
 {
     /**
      * @param $id

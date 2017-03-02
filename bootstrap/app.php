@@ -40,7 +40,7 @@ $app->withEloquent();
 
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
-    App\Exceptions\Handler::class
+    App\Infrastructure\Exceptions\Handler::class
 );
 
 $app->singleton(
@@ -50,20 +50,23 @@ $app->singleton(
 
 /*
 |--------------------------------------------------------------------------
-| Register Middleware
+| Register ServiceProvider
 |--------------------------------------------------------------------------
-|
-| Next, we will register the middleware with the application. These can
-| be global middleware that run before and after each request into a
-| route or middleware that'll be assigned to some specific routes.
-|
 */
 
-$app->extend("session",function($obj)use($app){
+$app->register(App\Providers\RepositoryServiceProvider::class);
+
+/*
+|--------------------------------------------------------------------------
+| Register Middleware
+|--------------------------------------------------------------------------
+*/
+
+$app->extend("session", function ($obj) use ($app) {
     $app->configure("session");
     return $obj;
 });
-$app->alias("session",\Illuminate\Session\SessionManager::class);
+$app->alias("session", \Illuminate\Session\SessionManager::class);
 $app->register(\Illuminate\Session\SessionServiceProvider::class);
 $app->middleware([
     Illuminate\Session\Middleware\StartSession::class,
@@ -77,11 +80,6 @@ $app->routeMiddleware([
 |--------------------------------------------------------------------------
 | Load The Application Routes
 |--------------------------------------------------------------------------
-|
-| Next we will include the routes file so that they can all be added to
-| the application. This will provide all of the URLs the application
-| can respond to, as well as the controllers that may handle them.
-|
 */
 
 $app->group(['namespace' => 'App\Http\Controllers'], function ($app) {

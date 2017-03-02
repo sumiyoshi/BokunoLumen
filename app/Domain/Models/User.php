@@ -1,21 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace App\Domain\Models;
 
-class User extends Model
+class User
 {
-
-    /**
-     * @var string
-     */
-    protected $table = 'users';
-
-    protected $fillable = [
-        'login_id',
-        'password',
-        'mail',
-        'name'
-    ];
 
     /**
      * @return array
@@ -37,5 +25,6 @@ class User extends Model
     {
         return password_verify($pass, $this->password);
     }
+
 
 }
