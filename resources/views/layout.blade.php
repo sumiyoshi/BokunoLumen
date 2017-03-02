@@ -50,11 +50,11 @@
                     <li class="">
                         <a href="javascript:void(0);" class="user-profile dropdown-toggle" data-toggle="dropdown"
                            aria-expanded="false">
-                            {{ $user->name }}
+                            {{ $login_user->name }}
                             <span class=" fa fa-angle-down"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-usermenu pull-right">
-                            <li><a href="">
+                            <li><a href="{{route('logout')}}">
                                     <i class="fa fa-sign-out pull-right"></i>
                                     Log Out</a>
                             </li>
@@ -72,7 +72,6 @@
                     <p>{{$flash}}</p>
                 </div>
             @endif
-
 
             @yield('content')
 

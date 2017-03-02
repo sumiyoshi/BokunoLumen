@@ -31,10 +31,8 @@ class Authenticate
     public function handle($request, Closure $next)
     {
 
-//        $id = $request->session()->get('id');
-        $id = 3;
+        $id = $request->session()->get('id');
         if ($id && $user = $this->service->get($id)) {
-
             $request->setUserResolver(function () use ($user) {
                 return $user;
             });
@@ -42,6 +40,6 @@ class Authenticate
             return $next($request);
         }
 
-        return redirect()->route('users_new');
+        return redirect()->route('login');
     }
 }

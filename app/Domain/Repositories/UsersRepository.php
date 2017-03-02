@@ -20,6 +20,12 @@ interface UsersRepository
     public function getList(array $options);
 
     /**
+     * @param $mail
+     * @return User
+     */
+    public function getByMail($mail);
+
+    /**
      * @param $id
      * @param array $data
      * @return User

@@ -26,6 +26,12 @@ class UsersRepositoryTest extends TestCase
         $user = $this->repo->get(2);
         $this->assertEquals($user->name, 'TestUser2');
     }
+    
+    public function testGetByMail()
+    {
+        $user = $this->repo->getByMail('sumiyoshi102+2@gmail.com');
+        $this->assertEquals($user->name, 'TestUser2');
+    }
 
     public function testList()
     {

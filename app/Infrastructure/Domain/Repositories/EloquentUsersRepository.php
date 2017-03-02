@@ -36,6 +36,23 @@ class EloquentUsersRepository implements UsersRepository
         }
     }
 
+
+    /**
+     * @param $mail
+     * @return User
+     */
+    public function getByMail($mail)
+    {
+        $eloquent = $this->eloquent;
+
+        /** @var EloquentUser $result */
+        if ($result = $eloquent::where('mail', $mail)->first()) {
+            return $result->toDomain();
+        } else {
+            return null;
+        }
+    }
+
     /**
      * @param $options
      *

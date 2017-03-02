@@ -21,7 +21,7 @@ class Controller extends BaseController
     /**
      * @return Validation\Factory
      */
-    protected function requestValidation(Request $request, array $rules)
+    public function requestValidation(Request $request, array $rules)
     {
         $filesystem = new Filesystem\Filesystem();
 
