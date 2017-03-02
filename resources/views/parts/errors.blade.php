@@ -1,5 +1,5 @@
 @if(!empty($errors[$key]))
     @foreach($errors[$key] as $error)
-        <div>{{$error}}<div>
+        <div class="alert">{{$error}}</div>
     @endforeach
 @endif
