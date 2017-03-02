@@ -2,8 +2,27 @@
 
 namespace App\Domain\Models;
 
-class User
+class User extends Model
 {
+    /**
+     * @var string
+     */
+    public $login_id;
+
+    /**
+     * @var string
+     */
+    public $password;
+
+    /**
+     * @var string
+     */
+    public $mail;
+
+    /**
+     * @var string
+     */
+    public $name;
 
     /**
      * @return array

@@ -2,6 +2,7 @@
 
 namespace App\Infrastructure\Domain\Repositories;
 
+use App\Domain\Models\Model;
 use App\Domain\Repositories\UsersRepository;
 use App\Infrastructure\Domain\Models\EloquentUser;
 
@@ -10,14 +11,14 @@ class EloquentUsersRepository implements UsersRepository
     /**
      * @var EloquentUser
      */
-    protected $model;
+    protected $eloquent;
 
     /**
      * @param EloquentUser $user
      */
     public function __construct(EloquentUser $user)
     {
-        $this->model = $user;
+        $this->eloquent = $user;
     }
 
     /**
@@ -26,8 +27,13 @@ class EloquentUsersRepository implements UsersRepository
      */
     public function get($id)
     {
-        $model = $this->model;
-        return $model::find($id);
+        $eloquent = $this->eloquent;
+        /** @var EloquentUser $result */
+        if ($result = $eloquent::find($id)) {
+            return $result->toDomain();
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -37,8 +43,19 @@ class EloquentUsersRepository implements UsersRepository
      */
     public function getList(array $options = [])
     {
-        $model = $this->model;
-        return $model::all();
+        $eloquent = $this->eloquent;;
+
+        if ($result = $eloquent::all()) {
+            $list = [];
+            /** @var EloquentUser $item */
+            foreach ($result as $item) {
+                $list[] = $item->toDomain();
+            }
+
+            return $list;
+        } else {
+            return [];
+        }
     }
 
     /**
@@ -48,14 +65,17 @@ class EloquentUsersRepository implements UsersRepository
      */
     public function update($id, array $data)
     {
-        if ($model = $this->get($id)) {
+        $eloquent = $this->eloquent;
+
+        /** @var EloquentUser $model */
+        if ($model = $eloquent::find($id)) {
 
             foreach ($data as $key => $val) {
                 $model->{$key} = $val;
             }
 
             if ($model->save()) {
-                return $model;
+                return $model->toDomain();
             }
         }
 
@@ -68,8 +88,14 @@ class EloquentUsersRepository implements UsersRepository
      */
     public function create(array $data)
     {
-        $model = $this->model;
-        return $model::create($data);
+        $eloquent = $this->eloquent;
+
+        /** @var EloquentUser $model */
+        if ($model = $eloquent::create($data)) {
+            return $model->toDomain();
+        } else {
+            return null;
+        }
     }
 
     /**
@@ -78,17 +104,18 @@ class EloquentUsersRepository implements UsersRepository
      */
     public function delete($id)
     {
-        $model = $this->model;
-        return $model::destroy($id);
+        $eloquent = $this->eloquent;
+        return $eloquent::destroy($id);
     }
 
     /**
-     * @return EloquentUser
+     * @return Model
      */
     public function createEntity()
     {
-        return new $this->model;
+        /** @var EloquentUser $model */
+        $model = new $this->eloquent;
+        return $model->toDomain();
     }
-
 
 }

@@ -22,7 +22,7 @@ class UsersRepositoryTest extends TestCase
 
     public function testGet()
     {
-        /** @var App\Models\User $user */
+        /** @var App\Domain\Models\User $user */
         $user = $this->repo->get(2);
         $this->assertEquals($user->name, 'TestUser2');
         $this->assertEquals($user->login_id, 'admin2');

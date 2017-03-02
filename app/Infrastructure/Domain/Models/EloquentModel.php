@@ -17,8 +17,13 @@ abstract class EloquentModel extends Model
 
     protected $dates = ['deleted_at'];
 
+    protected $domain_model;
+
+    /**
+     * @return \App\Domain\Models\Model
+     */
     public function toDomain()
     {
-        
+        return new $this->domain_model($this->toArray());
     }
 }

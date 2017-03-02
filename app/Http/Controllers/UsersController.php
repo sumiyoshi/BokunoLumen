@@ -44,7 +44,7 @@ class UsersController extends Controller
             return redirect()->route('users_show', ['id' => $model->id]);
         } else {
             return $this->render($request, 'users.new', [
-                'user' => $this->service->createEntity()->fill($request->except('password')),
+                'user' => $this->service->createEntity()->setProperties($request->except('password')),
                 'errors' => $this->service->getErrors()
             ]);
         }
@@ -53,7 +53,7 @@ class UsersController extends Controller
     public function editAction(Request $request, $id)
     {
         return $this->render($request, 'users.edit', [
-            'user' => $this->service->get($id)->fill(['password' => '']),
+            'user' => $this->service->get($id)->setProperties(['password' => '']),
             'errors' => []
         ]);
     }
@@ -65,7 +65,7 @@ class UsersController extends Controller
             return redirect()->route('users_show', ['id' => $model->id]);
         } else {
             return $this->render($request, 'users.edit', [
-                'user' => $this->service->get($id)->fill(['password' => ''])->fill($request->except('password')),
+                'user' => $this->service->get($id)->setProperties(['password' => ''])->setProperties($request->except('password')),
                 'errors' => $this->service->getErrors()
             ]);
         }

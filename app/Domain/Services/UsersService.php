@@ -3,7 +3,7 @@
 namespace App\Domain\Services;
 
 use App\Domain\Repositories\UsersRepository;
-use App\Models\User;
+use App\Domain\Models\User;
 
 
 class UsersService extends Service
