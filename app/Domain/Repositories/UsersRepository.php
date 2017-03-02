@@ -2,7 +2,7 @@
 
 namespace App\Domain\Repositories;
 
-interface UsersRepositoryInterface
+interface UsersRepository
 {
     /**
      * @param $id

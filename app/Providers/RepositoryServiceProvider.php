@@ -9,7 +9,7 @@ use Illuminate\Support\ServiceProvider;
 class RepositoryServiceProvider extends ServiceProvider
 {
     private $repositories = [
-        Repositories\UsersRepositoryInterface::class => InfrastructureRepositories\UsersRepository::class,
+        Repositories\UsersRepository::class => InfrastructureRepositories\EloquentUsersRepository::class,
 
     ];
 

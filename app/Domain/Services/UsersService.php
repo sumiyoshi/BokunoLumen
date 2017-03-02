@@ -2,7 +2,7 @@
 
 namespace App\Domain\Services;
 
-use App\Domain\Repositories\UsersRepositoryInterface;
+use App\Domain\Repositories\UsersRepository;
 use App\Models\User;
 
 
@@ -10,7 +10,7 @@ class UsersService extends Service
 {
 
     /**
-     * @var UsersRepositoryInterface
+     * @var UsersRepository
      */
     protected $repo;
 
@@ -26,9 +26,9 @@ class UsersService extends Service
 
     /**
      * UsersService constructor.
-     * @param UsersRepositoryInterface $repo
+     * @param UsersRepository $repo
      */
-    public function __construct(UsersRepositoryInterface $repo)
+    public function __construct(UsersRepository $repo)
     {
         $this->repo = $repo;
     }

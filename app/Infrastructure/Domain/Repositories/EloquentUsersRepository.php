@@ -2,27 +2,27 @@
 
 namespace App\Infrastructure\Domain\Repositories;
 
-use App\Domain\Repositories\UsersRepositoryInterface;
-use App\Models\User;
+use App\Domain\Repositories\UsersRepository;
+use App\Infrastructure\Domain\Models\EloquentUser;
 
-class UsersRepository implements UsersRepositoryInterface
+class EloquentUsersRepository implements UsersRepository
 {
     /**
-     * @var User
+     * @var EloquentUser
      */
     protected $model;
 
     /**
-     * @param User $user
+     * @param EloquentUser $user
      */
-    public function __construct(User $user)
+    public function __construct(EloquentUser $user)
     {
         $this->model = $user;
     }
 
     /**
      * @param $id
-     * @return User
+     * @return EloquentUser
      */
     public function get($id)
     {
@@ -33,7 +33,7 @@ class UsersRepository implements UsersRepositoryInterface
     /**
      * @param $options
      *
-     * @return User[]
+     * @return EloquentUser[]
      */
     public function getList(array $options = [])
     {
@@ -44,7 +44,7 @@ class UsersRepository implements UsersRepositoryInterface
     /**
      * @param $id
      * @param array $data
-     * @return User
+     * @return EloquentUser
      */
     public function update($id, array $data)
     {
@@ -64,7 +64,7 @@ class UsersRepository implements UsersRepositoryInterface
 
     /**
      * @param $data
-     * @return User
+     * @return EloquentUser
      */
     public function create(array $data)
     {
@@ -83,12 +83,12 @@ class UsersRepository implements UsersRepositoryInterface
     }
 
     /**
-     * @return User
+     * @return EloquentUser
      */
     public function createEntity()
     {
         return new $this->model;
     }
 
-   
+
 }
