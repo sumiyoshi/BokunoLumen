@@ -8,8 +8,13 @@
 </head>
 <body>
 
-@yield('content')
+@if (!empty($flash))
+    <div>
+        {{$flash}}
+    </div>
+@endif
 
+@yield('content')
 
 @yield('script')
 </body>

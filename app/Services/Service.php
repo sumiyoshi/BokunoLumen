@@ -105,7 +105,7 @@ abstract class Service implements ServiceInterface
     protected function validationFactory()
     {
         $filesystem = new Filesystem\Filesystem();
-        $fileLoader = new Translation\FileLoader($filesystem, BASE_PATH . '/resources/lang');
+        $fileLoader = new Translation\FileLoader($filesystem, storage_path() . '/resources/lang');
         $translator = new Translation\Translator($fileLoader, env('APP_LOCALE'));
         return new Validation\Factory($translator);
     }

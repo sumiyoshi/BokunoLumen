@@ -19,16 +19,16 @@ class UsersController extends Controller
 
     public function indexAction(Request $request)
     {
-        $request->session()->flash('status', 'Task was successful!');
-
         $list = $this->service->getList();
-        return view('users.index', compact('list'));
+        return view('users.index', compact('list'))
+            ->with('flash', $request->session()->get('flash'));
     }
 
-    public function showAction($id)
+    public function showAction(Request $request, $id)
     {
         $user = $this->service->get($id);
-        return view('users.show', compact('user'));
+        return view('users.show', compact('user'))
+            ->with('flash', $request->session()->get('flash'));
     }
 
     public function newAction()
@@ -42,6 +42,7 @@ class UsersController extends Controller
     public function createAction(Request $request)
     {
         if ($model = $this->service->save($request->all())) {
+            $request->session()->flash('flash', 'User created successfully.');
             return redirect()->route('users_show', ['id' => $model->id]);
         } else {
             return view('users.new', [
@@ -62,6 +63,7 @@ class UsersController extends Controller
     public function updateAction(Request $request, $id)
     {
         if ($model = $this->service->save($request->all(), $id)) {
+            $request->session()->flash('flash', 'User updated successfully.');
             return redirect()->route('users_show', ['id' => $model->id]);
         } else {
             return view('users.edit', [
@@ -71,9 +73,10 @@ class UsersController extends Controller
         }
     }
 
-    public function deleteAction($id)
+    public function deleteAction(Request $request, $id)
     {
         $this->service->delete($id);
+        $request->session()->flash('flash', 'User deleted successfully.');
         return redirect()->route('users');
     }
 }
