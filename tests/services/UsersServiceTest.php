@@ -1,6 +1,6 @@
 <?php
 
-use App\Services\UsersService;
+use App\Domain\Services\UsersService;
 use Illuminate\Support\Facades\Artisan;
 
 class UsersServiceTest extends TestCase
