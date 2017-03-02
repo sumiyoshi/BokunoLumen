@@ -39,15 +39,18 @@ class UsersController extends Controller
 
     public function createAction(Request $request)
     {
-        if ($model = $this->service->save($request->all())) {
-            $request->session()->flash('flash', 'User created successfully.');
-            return redirect()->route('users_show', ['id' => $model->id]);
-        } else {
+        $errors = $this->requestValidation($request, $this->getRules());
+
+        if ($errors) {
             return $this->render($request, 'users.new', [
                 'user' => $this->service->createEntity()->setProperties($request->except('password')),
-                'errors' => $this->service->getErrors()
+                'errors' => $errors
             ]);
         }
+
+        $model = $this->service->save($request->all());
+        $request->session()->flash('flash', 'User created successfully.');
+        return redirect()->route('users_show', ['id' => $model->id]);
     }
 
     public function editAction(Request $request, $id)
@@ -60,15 +63,18 @@ class UsersController extends Controller
 
     public function updateAction(Request $request, $id)
     {
-        if ($model = $this->service->save($request->all(), $id)) {
-            $request->session()->flash('flash', 'User updated successfully.');
-            return redirect()->route('users_show', ['id' => $model->id]);
-        } else {
+        $errors = $this->requestValidation($request, $this->getRules());
+
+        if ($errors) {
             return $this->render($request, 'users.edit', [
                 'user' => $this->service->get($id)->setProperties(['password' => ''])->setProperties($request->except('password')),
-                'errors' => $this->service->getErrors()
+                'errors' => $errors
             ]);
         }
+
+        $this->service->save($request->all(), $id);
+        $request->session()->flash('flash', 'User updated successfully.');
+        return redirect()->route('users_show', ['id' => $id]);
     }
 
     public function deleteAction(Request $request, $id)
@@ -76,5 +82,18 @@ class UsersController extends Controller
         $this->service->delete($id);
         $request->session()->flash('flash', 'User deleted successfully.');
         return redirect()->route('users');
+    }
+
+    /**
+     * @return array
+     */
+    private function getRules()
+    {
+        return [
+            "name" => "required|max:100",
+            "login_id" => "required|max:100",
+            "password" => "required|max:100",
+            "mail" => "required|max:255"
+        ];
     }
 }

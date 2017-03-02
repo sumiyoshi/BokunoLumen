@@ -28,9 +28,4 @@ class UsersServiceTest extends TestCase
         $this->assertEquals($model instanceof \App\Domain\Models\User, true);
     }
 
-    public function testSaveDelete()
-    {
-        $this->assertEquals($this->service->save([]), false);
-        $this->assertEquals((bool)$this->service->getErrors(), true);
-    }
 }

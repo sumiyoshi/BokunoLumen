@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Laravel\Lumen\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
+use Illuminate\Validation;
+use Illuminate\Filesystem;
+use Illuminate\Translation;
 
 class Controller extends BaseController
 {
@@ -13,5 +16,24 @@ class Controller extends BaseController
         return view($template, $data)
             ->with('flash', $request->session()->get('flash'))
             ->with('login_user', $request->user());
+    }
+
+    /**
+     * @return Validation\Factory
+     */
+    protected function requestValidation(Request $request, array $rules)
+    {
+        $filesystem = new Filesystem\Filesystem();
+
+        $fileLoader = new Translation\FileLoader($filesystem, resource_path('lang'));
+        $translator = new Translation\Translator($fileLoader, env('APP_LOCALE'));
+        $factory = new Validation\Factory($translator);
+        $v = $factory->make($request->all(), $rules);
+
+        if ($v->fails()) {
+            return $v->messages()->toArray();
+        } else {
+            return null;
+        }
     }
 }

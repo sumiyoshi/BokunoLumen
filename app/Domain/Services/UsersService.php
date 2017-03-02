@@ -15,16 +15,6 @@ class UsersService extends Service
     protected $repo;
 
     /**
-     * @var array
-     */
-    protected $rules = [
-        "name" => "required|max:100",
-        "login_id" => "required|max:100",
-        "password" => "required|max:100",
-        "mail" => "required|max:255"
-    ];
-
-    /**
      * UsersService constructor.
      * @param UsersRepository $repo
      */
@@ -59,14 +49,6 @@ class UsersService extends Service
      */
     public function save(array $data, $id = null)
     {
-        $factory = $this->validationFactory();
-
-        $v = $factory->make($data, $this->rules);
-        if ($v->fails()) {
-            $this->errors = $v->messages()->toArray();
-            return false;
-        }
-
         if (is_null($id)) {
             /** @var User $model */
             $model = $this->repo->create(User::passwordHash($data));
