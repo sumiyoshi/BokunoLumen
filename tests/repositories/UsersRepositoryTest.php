@@ -22,11 +22,10 @@ class UsersRepositoryTest extends TestCase
 
     public function testGet()
     {
-        /** @var App\Domain\Models\User $user */
         $user = $this->repo->get(2);
         $this->assertEquals($user->name, 'TestUser2');
     }
-    
+
     public function testGetByMail()
     {
         $user = $this->repo->getByMail('sumiyoshi102+2@gmail.com');

@@ -21,14 +21,14 @@ class Controller extends BaseController
     /**
      * @return Validation\Factory
      */
-    public function requestValidation(Request $request, array $rules)
+    public function requestValidation(array $data, array $rules)
     {
         $filesystem = new Filesystem\Filesystem();
 
         $fileLoader = new Translation\FileLoader($filesystem, resource_path('lang'));
         $translator = new Translation\Translator($fileLoader, env('APP_LOCALE'));
         $factory = new Validation\Factory($translator);
-        $v = $factory->make($request->all(), $rules);
+        $v = $factory->make($data, $rules);
 
         if ($v->fails()) {
             return $v->messages()->toArray();

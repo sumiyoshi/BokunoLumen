@@ -26,7 +26,7 @@ class AuthController extends Controller
 
     public function loginAction(Request $request)
     {
-        $errors = $this->requestValidation($request, $this->getRules());
+        $errors = $this->requestValidation($request->all(), $this->getRules());
 
         if ($errors) {
             return $this->render($request, 'auth.login', [

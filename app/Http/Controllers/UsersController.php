@@ -39,7 +39,7 @@ class UsersController extends Controller
 
     public function createAction(Request $request)
     {
-        $errors = $this->requestValidation($request, $this->getRules());
+        $errors = $this->requestValidation($request->all(), $this->getRules());
 
         if ($errors) {
             return $this->render($request, 'users.new', [
@@ -63,7 +63,7 @@ class UsersController extends Controller
 
     public function updateAction(Request $request, $id)
     {
-        $errors = $this->requestValidation($request, $this->getRules());
+        $errors = $this->requestValidation($request->all(), $this->getRules());
 
         if ($errors) {
             return $this->render($request, 'users.edit', [
@@ -87,7 +87,7 @@ class UsersController extends Controller
     /**
      * @return array
      */
-    private function getRules()
+    public function getRules()
     {
         return [
             "name" => "required|max:100",
