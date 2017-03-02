@@ -1,0 +1,39 @@
+.
+├── bootstrap
+│   └── app.php
+├── config
+│   └── session.php
+├── database
+│   ├── migrations
+│   └── seeds
+├── public
+├── resources
+│   ├── assets
+│   ├── lang
+│   └── views
+├── src
+│   ├── App
+│   │   ├── Console
+│   │   ├── Http
+│   │   │   ├── Controllers
+│   │   │   └── Middleware
+│   │   └── web.php
+│   ├── Domain
+│   │   ├── Models
+│   │   ├── Repositories
+│   │   └── Services
+│   └── Infrastructure
+│       ├── Domain
+│       │   ├── Models
+│       │   └── Repositories
+│       ├── Exceptions
+│       └── Providers
+├── storage
+│   ├── app
+│   ├── framework
+│   │   ├── cache
+│   │   ├── sessions
+│   │   └── views
+│   └── logs
+├── tests
+└── vendor
