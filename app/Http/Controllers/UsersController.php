@@ -20,20 +20,18 @@ class UsersController extends Controller
     public function indexAction(Request $request)
     {
         $list = $this->service->getList();
-        return view('users.index', compact('list'))
-            ->with('flash', $request->session()->get('flash'));
+        return $this->render($request, 'users.index', compact('list'));
     }
 
     public function showAction(Request $request, $id)
     {
         $user = $this->service->get($id);
-        return view('users.show', compact('user'))
-            ->with('flash', $request->session()->get('flash'));
+        return $this->render($request, 'users.show', compact('user'));
     }
 
-    public function newAction()
+    public function newAction(Request $request)
     {
-        return view('users.new', [
+        return $this->render($request, 'users.new', [
             'user' => $this->service->createEntity(),
             'errors' => []
         ]);
@@ -45,16 +43,16 @@ class UsersController extends Controller
             $request->session()->flash('flash', 'User created successfully.');
             return redirect()->route('users_show', ['id' => $model->id]);
         } else {
-            return view('users.new', [
+            return $this->render($request, 'users.new', [
                 'user' => $this->service->createEntity()->fill($request->except('password')),
                 'errors' => $this->service->getErrors()
             ]);
         }
     }
 
-    public function editAction($id)
+    public function editAction(Request $request, $id)
     {
-        return view('users.edit', [
+        return $this->render($request, 'users.edit', [
             'user' => $this->service->get($id)->fill(['password' => '']),
             'errors' => []
         ]);
@@ -66,7 +64,7 @@ class UsersController extends Controller
             $request->session()->flash('flash', 'User updated successfully.');
             return redirect()->route('users_show', ['id' => $model->id]);
         } else {
-            return view('users.edit', [
+            return $this->render($request, 'users.edit', [
                 'user' => $this->service->get($id)->fill(['password' => ''])->fill($request->except('password')),
                 'errors' => $this->service->getErrors()
             ]);

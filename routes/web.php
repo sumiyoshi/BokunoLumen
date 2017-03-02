@@ -1,9 +1,5 @@
 <?php
 
-$app->get('/', function () use ($app) {
-    return $app->version();
-});
-
 $app->group(['middleware' => ['auth']], function () use ($app) {
     #region users
     $app->get('/users', ['as' => 'users', 'uses' => 'UsersController@indexAction']);
@@ -14,5 +10,5 @@ $app->group(['middleware' => ['auth']], function () use ($app) {
     $app->post('/users/{id:[1-9]+}/update', ['as' => 'users_update', 'uses' => 'UsersController@updateAction']);
     $app->post('/users/{id:[1-9]+}/delete', ['as' => 'users_delete', 'uses' => 'UsersController@deleteAction']);
     #endregion
-
 });
+

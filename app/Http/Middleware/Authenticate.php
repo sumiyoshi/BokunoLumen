@@ -3,24 +3,22 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Contracts\Auth\Factory as Auth;
+use App\Services\UsersService;
 
 class Authenticate
 {
     /**
-     * The authentication guard factory instance.
-     *
-     * @var \Illuminate\Contracts\Auth\Factory
+     * @var UsersService
      */
-    protected $auth;
+    private $service;
 
     /**
      * Authenticate constructor.
-     * @param Auth $auth
+     * @param UsersService $service
      */
-    public function __construct(Auth $auth)
+    public function __construct(UsersService $service)
     {
-        $this->auth = $auth;
+        $this->service = $service;
     }
 
     /**
@@ -28,15 +26,22 @@ class Authenticate
      *
      * @param  \Illuminate\Http\Request $request
      * @param  \Closure $next
-     * @param  string|null $guard
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = null)
+    public function handle($request, Closure $next)
     {
-//        if ($this->auth->guard($guard)->guest()) {
-//            return response('Unauthorized.', 401);
-//        }
 
-        return $next($request);
+//        $id = $request->session()->get('id');
+        $id = 3;
+        if ($id && $user = $this->service->get($id)) {
+
+            $request->setUserResolver(function () use ($user) {
+                return $user;
+            });
+
+            return $next($request);
+        }
+
+        return redirect()->route('users_new');
     }
 }
