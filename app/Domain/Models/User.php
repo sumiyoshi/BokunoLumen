@@ -4,10 +4,6 @@ namespace App\Domain\Models;
 
 class User extends Model
 {
-    /**
-     * @var string
-     */
-    public $login_id;
 
     /**
      * @var string

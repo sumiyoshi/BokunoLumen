@@ -91,7 +91,6 @@ class UsersController extends Controller
     {
         return [
             "name" => "required|max:100",
-            "login_id" => "required|max:100",
             "password" => "required|max:100",
             "mail" => "required|max:255"
         ];

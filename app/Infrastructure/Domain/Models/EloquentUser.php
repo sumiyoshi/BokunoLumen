@@ -14,7 +14,6 @@ class EloquentUser extends EloquentModel
     protected $domain_model = User::class;
 
     protected $fillable = [
-        'login_id',
         'password',
         'mail',
         'name'

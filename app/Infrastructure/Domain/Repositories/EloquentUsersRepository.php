@@ -2,7 +2,7 @@
 
 namespace App\Infrastructure\Domain\Repositories;
 
-use App\Domain\Models\Model;
+use App\Domain\Models\User;
 use App\Domain\Repositories\UsersRepository;
 use App\Infrastructure\Domain\Models\EloquentUser;
 
@@ -23,7 +23,7 @@ class EloquentUsersRepository implements UsersRepository
 
     /**
      * @param $id
-     * @return EloquentUser
+     * @return User
      */
     public function get($id)
     {
@@ -39,7 +39,7 @@ class EloquentUsersRepository implements UsersRepository
     /**
      * @param $options
      *
-     * @return EloquentUser[]
+     * @return User[]
      */
     public function getList(array $options = [])
     {
@@ -61,7 +61,7 @@ class EloquentUsersRepository implements UsersRepository
     /**
      * @param $id
      * @param array $data
-     * @return EloquentUser
+     * @return User
      */
     public function update($id, array $data)
     {
@@ -84,7 +84,7 @@ class EloquentUsersRepository implements UsersRepository
 
     /**
      * @param $data
-     * @return EloquentUser
+     * @return User
      */
     public function create(array $data)
     {
@@ -109,7 +109,7 @@ class EloquentUsersRepository implements UsersRepository
     }
 
     /**
-     * @return Model
+     * @return User
      */
     public function createEntity()
     {

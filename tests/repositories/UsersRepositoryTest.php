@@ -25,7 +25,6 @@ class UsersRepositoryTest extends TestCase
         /** @var App\Domain\Models\User $user */
         $user = $this->repo->get(2);
         $this->assertEquals($user->name, 'TestUser2');
-        $this->assertEquals($user->login_id, 'admin2');
     }
 
     public function testList()
@@ -38,13 +37,11 @@ class UsersRepositoryTest extends TestCase
     {
         $user = $this->repo->create([
             'name' => 'TestUser3',
-            'login_id' => 'admin3',
             'mail' => 'sumiyoshi102@gmail.com',
             'password' => password_hash('password', PASSWORD_DEFAULT)
         ]);
 
         $this->assertEquals($user->name, 'TestUser3');
-        $this->assertEquals($user->login_id, 'admin3');
         $this->assertEquals($user->mail, 'sumiyoshi102@gmail.com');
 
         $user = $this->repo->update($user->id, ['name' => 'update']);

@@ -13,9 +13,6 @@
         {{$user->name}}<br/>
     </div>
     <div>
-        {{$user->login_id}}
-    </div>
-    <div>
         {{$user->mail}}
     </div>
 
