@@ -1,12 +1,12 @@
 <?php
 
-use App\Repositories\UsersRepository;
+use App\Domain\Repositories\UsersRepositoryInterface;
 use Illuminate\Support\Facades\Artisan;
 
 class UsersRepositoryTest extends TestCase
 {
     /**
-     * @var UsersRepository
+     * @var UsersRepositoryInterface
      */
     protected $repo;
 
@@ -17,7 +17,7 @@ class UsersRepositoryTest extends TestCase
         Artisan::call('migrate:refresh');
         Artisan::call('db:seed');
 
-        $this->repo = $this->app->make(UsersRepository::class);
+        $this->repo = $this->app->make(UsersRepositoryInterface::class);
     }
 
     public function testGet()
@@ -30,7 +30,7 @@ class UsersRepositoryTest extends TestCase
 
     public function testList()
     {
-        $users = $this->repo->getList();
+        $users = $this->repo->getList([]);
         $this->assertEquals(count($users), 2);
     }
 

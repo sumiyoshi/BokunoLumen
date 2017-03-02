@@ -1,20 +1,28 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Infrastructure\Domain\Repositories;
 
-use App\Models\Model;
+use App\Domain\Repositories\UsersRepositoryInterface;
+use App\Models\User;
 
-abstract class Repository implements RepositoryInterface
+class UsersRepository implements UsersRepositoryInterface
 {
-
     /**
-     * @var Model
+     * @var User
      */
     protected $model;
 
     /**
+     * @param User $user
+     */
+    public function __construct(User $user)
+    {
+        $this->model = $user;
+    }
+
+    /**
      * @param $id
-     * @return Model
+     * @return User
      */
     public function get($id)
     {
@@ -25,7 +33,7 @@ abstract class Repository implements RepositoryInterface
     /**
      * @param $options
      *
-     * @return Model[]
+     * @return User[]
      */
     public function getList(array $options = [])
     {
@@ -36,7 +44,7 @@ abstract class Repository implements RepositoryInterface
     /**
      * @param $id
      * @param array $data
-     * @return Model
+     * @return User
      */
     public function update($id, array $data)
     {
@@ -56,7 +64,7 @@ abstract class Repository implements RepositoryInterface
 
     /**
      * @param $data
-     * @return Model
+     * @return User
      */
     public function create(array $data)
     {
@@ -75,10 +83,12 @@ abstract class Repository implements RepositoryInterface
     }
 
     /**
-     * @return Model
+     * @return User
      */
     public function createEntity()
     {
         return new $this->model;
     }
+
+   
 }
