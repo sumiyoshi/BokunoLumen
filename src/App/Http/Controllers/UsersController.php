@@ -49,7 +49,7 @@ class UsersController extends Controller
         }
 
         $model = $this->service->save($request->all());
-        $request->session()->flash('flash', 'User created successfully.');
+        $request->session()->flash('flash', trans('message.created', ['attribute' => 'User'], env('APP_LOCALE')));
         return redirect()->route('users_show', ['id' => $model->id]);
     }
 
@@ -73,14 +73,14 @@ class UsersController extends Controller
         }
 
         $this->service->save($request->all(), $id);
-        $request->session()->flash('flash', 'User updated successfully.');
+        $request->session()->flash('flash', trans('message.updated', ['attribute' => 'User'], env('APP_LOCALE')));
         return redirect()->route('users_show', ['id' => $id]);
     }
 
     public function deleteAction(Request $request, $id)
     {
         $this->service->delete($id);
-        $request->session()->flash('flash', 'User deleted successfully.');
+        $request->session()->flash('flash', trans('message.deleted', ['attribute' => 'User'], env('APP_LOCALE')));
         return redirect()->route('users');
     }
 

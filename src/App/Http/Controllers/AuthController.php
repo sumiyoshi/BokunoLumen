@@ -44,7 +44,7 @@ class AuthController extends Controller
 
         $request->session()->put('id', $id);
 
-        return redirect()->route('users');
+        return redirect()->route('home');
     }
 
     public function logoutAction(Request $request)

@@ -1,6 +1,11 @@
 <?php
 
 $app->group(['middleware' => ['auth']], function () use ($app) {
+
+    #region home
+    $app->get('/', ['as' => 'home', 'uses' => 'HomeController@indexAction']);
+    #endregion
+
     #region users
     $app->get('/users', ['as' => 'users', 'uses' => 'UsersController@indexAction']);
     $app->get('/users/new', ['as' => 'users_new', 'uses' => 'UsersController@newAction']);
