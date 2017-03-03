@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="/gentelella/vendors/animate.css/animate.min.css"/>
     <link rel="stylesheet" href="/gentelella/build/css/custom.min.css"/>
 
+    <link rel="stylesheet" href="{{asset('/css/app.min.css')}}"/>
+
     @yield('style')
 </head>
 <body class="nav-md">
@@ -82,6 +84,7 @@
 <script src="/gentelella/vendors/jquery/dist/jquery.min.js"></script>
 <script src="/gentelella/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="/gentelella/build/js/custom.min.js"></script>
+<script src="{{asset('/js/app.min.js')}}"></script>
 
 @yield('script')
 </body>
