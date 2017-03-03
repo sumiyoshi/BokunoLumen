@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 
 require_once 'UsersTestSeeder.php';
+require_once 'UsersSeeder.php';
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,6 +16,8 @@ class DatabaseSeeder extends Seeder
     {
         if (env('APP_ENV') == 'testing') {
             $this->call(UsersTestSeeder::class);
+        } else {
+            $this->call(UsersSeeder::class);
         }
     }
 }

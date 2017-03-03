@@ -11,7 +11,7 @@ class UsersTestSeeder extends Seeder
             ->insert(
                 [
                     'name' => 'TestUser',
-                    'mail' => 'sumiyoshi102+1@gmail.com',
+                    'mail' => 'mail.sumimaru+1@gmail.com',
                     'password' => password_hash('password', PASSWORD_DEFAULT)
                 ]
             );
@@ -19,7 +19,7 @@ class UsersTestSeeder extends Seeder
             ->insert(
                 [
                     'name' => 'TestUser2',
-                    'mail' => 'sumiyoshi102+2@gmail.com',
+                    'mail' => 'mail.sumimaru+2@gmail.com',
                     'password' => password_hash('password', PASSWORD_DEFAULT)
                 ]
             );
