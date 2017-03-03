@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <title>@yield('title')</title>
 
-    <link rel="stylesheet" href="/gentelella/vendors/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="/gentelella/vendors/font-awesome/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="/gentelella/vendors/animate.css/animate.min.css"/>
-    <link rel="stylesheet" href="/gentelella/build/css/custom.min.css"/>
+    <link rel="stylesheet" href="/node_modules/gentelella/vendors/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/node_modules/gentelella/vendors/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="/node_modules/gentelella/vendors/animate.css/animate.min.css"/>
+    <link rel="stylesheet" href="/node_modules/gentelella/build/css/custom.min.css"/>
 
     <link rel="stylesheet" href="{{asset('/css/app.min.css')}}"/>
 
@@ -81,9 +81,9 @@
     </div>
 </div>
 
-<script src="/gentelella/vendors/jquery/dist/jquery.min.js"></script>
-<script src="/gentelella/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/gentelella/build/js/custom.min.js"></script>
+<script src="/node_modules/gentelella/vendors/jquery/dist/jquery.min.js"></script>
+<script src="/node_modules/gentelella/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/node_modules/gentelella/build/js/custom.min.js"></script>
 <script src="{{asset('/js/app.min.js')}}"></script>
 
 @yield('script')

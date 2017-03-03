@@ -9,6 +9,7 @@ use Infrastructure\Domain\Models\EloquentModel;
  */
 trait EloquentCRUDRepository
 {
+    
     /**
      * @param $id
      * @return EloquentModel

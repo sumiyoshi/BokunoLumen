@@ -3,6 +3,8 @@
 composer.phar
 composer.lock
 public/gentelella
+public/node_modules
+resources/assets/node_modules
 Homestead.json
 Homestead.yaml
 .env
