@@ -79,9 +79,12 @@ trait EloquentCRUDRepository
     {
         $eloquent = $this->eloquent;
 
-        /** @var EloquentModel $model */
-        if ($model = $eloquent::create($data)) {
-            return $model->toDomain();
+        foreach ($data as $key => $val) {
+            $eloquent->{$key} = $val;
+        }
+
+        if ($eloquent->save()) {
+            return $eloquent->toDomain();
         } else {
             return null;
         }

@@ -24,8 +24,8 @@ class AuthServiceTest extends TestCase
     public function testLogin()
     {
         $this->assertEquals($this->service->login('test', 'password'), null);
-        $this->assertEquals($this->service->login('sumiyoshi102+1@gmail.com', 'pass'), null);
-        $this->assertEquals($this->service->login('sumiyoshi102+1@gmail.com', 'password'), 1);
+        $this->assertEquals($this->service->login('mail.sumimaru+1@gmail.com', 'pass'), null);
+        $this->assertEquals($this->service->login('mail.sumimaru+1@gmail.com', 'password'), 1);
     }
 
 }

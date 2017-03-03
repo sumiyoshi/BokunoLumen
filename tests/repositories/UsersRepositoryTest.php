@@ -28,7 +28,7 @@ class UsersRepositoryTest extends TestCase
 
     public function testGetByMail()
     {
-        $user = $this->repo->getByMail('sumiyoshi102+2@gmail.com');
+        $user = $this->repo->getByMail('mail.sumimaru+2@gmail.com');
         $this->assertEquals($user->name, 'TestUser2');
     }
 
@@ -42,12 +42,12 @@ class UsersRepositoryTest extends TestCase
     {
         $user = $this->repo->create([
             'name' => 'TestUser3',
-            'mail' => 'sumiyoshi102@gmail.com',
+            'mail' => 'mail.sumimaru@gmail.com',
             'password' => password_hash('password', PASSWORD_DEFAULT)
         ]);
 
         $this->assertEquals($user->name, 'TestUser3');
-        $this->assertEquals($user->mail, 'sumiyoshi102@gmail.com');
+        $this->assertEquals($user->mail, 'mail.sumimaru@gmail.com');
 
         $user = $this->repo->update($user->id, ['name' => 'update']);
         $this->assertEquals($user->name, 'update');
