@@ -1,2 +1,9 @@
-$black: #333;
+$danger-color: #843534;
 
+.alert {
+  padding: 0;
+  margin-bottom: 0;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: $danger-color;
+}
