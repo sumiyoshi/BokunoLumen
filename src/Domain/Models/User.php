@@ -2,23 +2,15 @@
 
 namespace Domain\Models;
 
+/**
+ * Class User
+ * @package Domain\Models
+ *
+ * @property
+ */
 class User extends Model
 {
-
-    /**
-     * @var string
-     */
-    public $password;
-
-    /**
-     * @var string
-     */
-    public $mail;
-
-    /**
-     * @var string
-     */
-    public $name;
+    use Property\UserProperty;
 
     /**
      * @return array
@@ -40,6 +32,4 @@ class User extends Model
     {
         return password_verify($pass, $this->password);
     }
-
-
 }

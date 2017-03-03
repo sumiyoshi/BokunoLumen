@@ -20,7 +20,7 @@ abstract class EloquentModel extends Model
     protected $domain_model;
 
     /**
-     * @return \App\Domain\Models\Model
+     * @return \Domain\Models\Model
      */
     public function toDomain()
     {
