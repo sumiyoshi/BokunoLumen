@@ -2,12 +2,6 @@
 
 namespace Domain\Models;
 
-/**
- * Class User
- * @package Domain\Models
- *
- * @property
- */
 class User extends Model
 {
     use Property\UserProperty;
