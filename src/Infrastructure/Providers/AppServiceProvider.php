@@ -19,6 +19,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->app['auth']->viaRequest('api', function ($request) {
+            return null;
+        });
     }
 
     /**

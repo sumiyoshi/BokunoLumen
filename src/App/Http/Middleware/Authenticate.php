@@ -32,6 +32,7 @@ class Authenticate
     {
 
         $id = $request->session()->get('id');
+
         if ($id && $user = $this->service->get($id)) {
             $request->setUserResolver(function () use ($user) {
                 return $user;
