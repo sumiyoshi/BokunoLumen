@@ -9,7 +9,7 @@ use Infrastructure\Domain\Models\EloquentModel;
  */
 trait EloquentCRUDRepository
 {
-    
+
     /**
      * @param $id
      * @return EloquentModel
@@ -34,7 +34,7 @@ trait EloquentCRUDRepository
     {
         $eloquent = $this->eloquent;;
 
-        if ($result = $eloquent::all()) {
+        if ($result = $eloquent::condition($options)->get()) {
             $list = [];
             /** @var EloquentModel $item */
             foreach ($result as $item) {
