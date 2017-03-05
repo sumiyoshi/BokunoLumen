@@ -18,7 +18,16 @@ class UsersRequestTest extends TestCase
 
     public function testRequest()
     {
-        $this->assertEquals((bool)$this->controller->requestValidation([], $this->controller->getRules()), true);
+
+        list($res, $data) = $this->controller->requestValidation([], $this->controller->getRules());
+        $this->assertEquals($res, false);
+
+        list($res, $data) = $this->controller->requestValidation([
+            "name" => "name",
+            "password" => "password",
+            "mail" => 'mail'
+        ], $this->controller->getRules());
+        $this->assertEquals($res, true);
     }
 
 }

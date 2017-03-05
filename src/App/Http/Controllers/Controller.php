@@ -31,9 +31,15 @@ class Controller extends BaseController
         $v = $factory->make($data, $rules);
 
         if ($v->fails()) {
-            return $v->messages()->toArray();
+            return [
+                false,
+                $v->messages()->toArray()
+            ];
         } else {
-            return null;
+            return [
+                true,
+                $v->getData()
+            ];
         }
     }
 

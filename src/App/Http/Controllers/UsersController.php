@@ -39,16 +39,16 @@ class UsersController extends Controller
 
     public function createAction(Request $request)
     {
-        $errors = $this->requestValidation($request->all(), $this->getRules());
+        list($res, $data) = $this->requestValidation($request->all(), $this->getRules());
 
-        if ($errors) {
+        if (!$res) {
             return $this->render($request, 'users.new', [
                 'user' => $this->service->createEntity()->setProperties($request->except('password')),
-                'errors' => $errors
+                'errors' => $data
             ]);
         }
 
-        $model = $this->service->save($request->all());
+        $model = $this->service->save($data);
         $request->session()->flash('flash', trans('message.created', ['attribute' => 'User'], env('APP_LOCALE')));
         return redirect()->route('users_show', ['id' => $model->id]);
     }
@@ -63,16 +63,16 @@ class UsersController extends Controller
 
     public function updateAction(Request $request, $id)
     {
-        $errors = $this->requestValidation($request->all(), $this->getRules());
+        list($res, $data) = $this->requestValidation($request->all(), $this->getRules());
 
-        if ($errors) {
+        if (!$res) {
             return $this->render($request, 'users.edit', [
                 'user' => $this->service->get($id)->setProperties(['password' => ''])->setProperties($request->except('password')),
-                'errors' => $errors
+                'errors' => $data
             ]);
         }
 
-        $this->service->save($request->all(), $id);
+        $this->service->save($data, $id);
         $request->session()->flash('flash', trans('message.updated', ['attribute' => 'User'], env('APP_LOCALE')));
         return redirect()->route('users_show', ['id' => $id]);
     }
