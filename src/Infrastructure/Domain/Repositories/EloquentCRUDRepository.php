@@ -97,7 +97,7 @@ trait EloquentCRUDRepository
     public function delete($id)
     {
         $eloquent = $this->eloquent;
-        return $eloquent::destroy($id);
+        return $eloquent::find($id)->forceDelete();
     }
 
     /**
