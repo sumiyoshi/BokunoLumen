@@ -32,12 +32,19 @@ abstract class Model
      */
     public function setProperties(array $data)
     {
-        foreach ($data as $key => $row) {
-            if (!property_exists($this, $key)) {
+        $reflection = new \ReflectionClass(static::class);
+
+        foreach ($reflection->getProperties() as $property) {
+
+            if (!$property->isPublic()) {
                 continue;
             }
-
-            $this->{$key} = $row;
+            
+            if (!isset($data[$property->getName()])) {
+                continue;
+            }
+            
+            $this->{$property->getName()} = $data[$property->getName()];
         }
 
         return $this;
