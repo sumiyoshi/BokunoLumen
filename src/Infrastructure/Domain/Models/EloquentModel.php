@@ -9,9 +9,8 @@ use Illuminate\Database\Eloquent\Builder;
 /**
  * @method static find($id)
  * @method static Builder where($string, $value)
- * @method static create($params)
  * @method static Builder condition($option)
- * @method static Builder paginate($option)
+ * @method static Builder paginate($limit, $offset)
  */
 abstract class EloquentModel extends Model
 {
@@ -21,6 +20,15 @@ abstract class EloquentModel extends Model
 
     protected $domain_model;
 
+    /**
+     * @return \Domain\Models\Model
+     */
+    public function toDomain()
+    {
+        /** @var \Domain\Models\Model $model */
+        $model = app()->make($this->domain_model);
+        return $model->setProperties($this->toArray());
+    }
 
     /**
      * @param Builder $builder
@@ -34,19 +42,12 @@ abstract class EloquentModel extends Model
 
     /**
      * @param Builder $builder
-     * @param array $options
+     * @param $limit
+     * @param $offset
      * @return Builder
      */
-    public function scopePaginate(Builder $builder, array $options)
+    public function scopePaginate(Builder $builder, $limit, $offset)
     {
-        return $builder;
-    }
-
-    /**
-     * @return \Domain\Models\Model
-     */
-    public function toDomain()
-    {
-        return new $this->domain_model($this->toArray());
+        return $builder->limit($limit)->offset($offset)->orderBy('id');
     }
 }
