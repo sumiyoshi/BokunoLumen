@@ -9,7 +9,6 @@ use Infrastructure\Domain\Models\EloquentModel;
  */
 trait EloquentCRUDRepository
 {
-
     /**
      * @param $id
      * @return EloquentModel
@@ -26,25 +25,30 @@ trait EloquentCRUDRepository
     }
 
     /**
+     * @param array $options
+     * @return int
+     */
+    public function getCountList(array $options)
+    {
+        $eloquent = $this->eloquent;
+        return $eloquent::condition($options)->count();
+    }
+
+    /**
      * @param $options
      *
      * @return EloquentModel[]
      */
     public function getList(array $options = [])
     {
-        $eloquent = $this->eloquent;;
+        $eloquent = $this->eloquent;
+        $builder = $eloquent::condition($options);
 
-        if ($result = $eloquent::condition($options)->get()) {
-            $list = [];
-            /** @var EloquentModel $item */
-            foreach ($result as $item) {
-                $list[] = $item->toDomain();
-            }
-
-            return $list;
-        } else {
-            return [];
+        if (isset($options['limit']) && isset($options['page'])) {
+            $builder = $eloquent->scopePaginate($builder, $options['limit'], $options['limit'] * ($options['page'] - 1));
         }
+
+        return $this->toDomains($builder);
     }
 
     /**
@@ -83,6 +87,7 @@ trait EloquentCRUDRepository
             $eloquent->{$key} = $val;
         }
 
+        /** @var EloquentModel $model */
         if ($eloquent->save()) {
             return $eloquent->toDomain();
         } else {
@@ -108,6 +113,25 @@ trait EloquentCRUDRepository
         /** @var EloquentModel $model */
         $model = new $this->eloquent;
         return $model->toDomain();
+    }
+
+    /**
+     * @param \Illuminate\Database\Eloquent\Builder $builder
+     * @return array
+     */
+    protected function toDomains(\Illuminate\Database\Eloquent\Builder $builder)
+    {
+        if ($result = $builder->get()) {
+            $list = [];
+            /** @var EloquentModel $item */
+            foreach ($result as $item) {
+                $list[] = $item->toDomain();
+            }
+
+            return $list;
+        } else {
+            return [];
+        }
     }
 
 }
