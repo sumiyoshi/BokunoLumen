@@ -27,17 +27,6 @@ abstract class Model
     public $deleted_at;
 
     /**
-     * Model constructor.
-     * @param array $data
-     */
-    public function __construct(array $data = [])
-    {
-        if ($data) {
-            $this->setProperties($data);
-        }
-    }
-
-    /**
      * @param array $data
      * @return $this
      */
