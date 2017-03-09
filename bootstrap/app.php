@@ -89,4 +89,20 @@ $app->group(['namespace' => 'App\Http\Controllers'], function ($app) {
     require __DIR__ . '/../src/App/web.php';
 });
 
+/*
+ |--------------------------------------------------------------------------
+ | Define a callback to be used to configure Monolog.
+ |--------------------------------------------------------------------------
+ */
+$app->configureMonologUsing(function (Monolog\Logger $monoLog) {
+
+    $handlers[] = (
+    new \Monolog\Handler\RotatingFileHandler(storage_path("logs/lumen.log"), 30)
+    )->setFormatter(new \Monolog\Formatter\LineFormatter(null, null, true, true));
+
+    $monoLog->setHandlers($handlers);
+
+    return $monoLog;
+});
+
 return $app;
