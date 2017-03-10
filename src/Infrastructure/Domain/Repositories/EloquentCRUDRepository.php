@@ -81,7 +81,7 @@ trait EloquentCRUDRepository
      */
     public function create(array $data)
     {
-        $eloquent = $this->eloquent;
+        $eloquent = clone $this->eloquent;
 
         foreach ($data as $key => $val) {
             $eloquent->{$key} = $val;
