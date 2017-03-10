@@ -4,7 +4,20 @@ namespace Domain\Models;
 
 class User extends Model
 {
-    use Property\UserProperty;
+    /**
+     * @var string
+     */
+    public $password;
+
+    /**
+     * @var string
+     */
+    public $mail;
+
+    /**
+     * @var string
+     */
+    public $name;
 
     /**
      * @return array
