@@ -6,7 +6,7 @@ use Domain\Repositories\UsersRepository;
 use Domain\Models\User;
 use Infrastructure\Domain\Services\CRUDService;
 
-class UsersService extends Service
+class UsersService extends Service implements \App\Services\UsersService
 {
     use CRUDService;
 

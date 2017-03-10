@@ -4,12 +4,19 @@ namespace Infrastructure\Providers;
 
 use Domain\Repositories;
 use Infrastructure\Domain\Repositories as InfrastructureRepositories;
+use App\Services;
+use Domain\Services as DomainServices;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
     private $register_list = [
         Repositories\UsersRepository::class => InfrastructureRepositories\EloquentUsersRepository::class,
+    ];
+
+    private $services_list = [
+        Services\AuthService::class => DomainServices\AuthService::class,
+        Services\UsersService::class => DomainServices\UsersService::class,
     ];
 
     /**
@@ -32,6 +39,10 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         foreach ($this->register_list as $interface => $repository) {
+            $this->app->bind($interface, $repository);
+        }
+
+        foreach ($this->services_list as $interface => $repository) {
             $this->app->bind($interface, $repository);
         }
     }

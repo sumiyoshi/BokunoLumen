@@ -1,6 +1,6 @@
 <?php
 
-use Domain\Services\AuthService;
+use App\Services\AuthService;
 use Illuminate\Support\Facades\Artisan;
 
 class AuthServiceTest extends TestCase

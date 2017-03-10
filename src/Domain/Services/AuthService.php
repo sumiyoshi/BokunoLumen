@@ -4,7 +4,7 @@ namespace Domain\Services;
 
 use Domain\Repositories\UsersRepository;
 
-class AuthService extends Service
+class AuthService extends Service implements \App\Services\AuthService
 {
 
     /**
