@@ -20,3 +20,9 @@ php -S localhost:8000 -t ./public
 ```
 php vendor/bin/phpunit tests/
 ```
+
+## IDE helper
+
+```
+php artisan ide-helper:generate
+```
