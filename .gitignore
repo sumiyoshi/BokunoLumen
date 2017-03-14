@@ -2,9 +2,11 @@
 /.idea
 composer.phar
 composer.lock
-public/gentelella
-public/node_modules
+public/vendor
+public/css
+public/js
 resources/assets/node_modules
 Homestead.json
 Homestead.yaml
 .env
+/old
