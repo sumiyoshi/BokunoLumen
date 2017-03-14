@@ -4,11 +4,7 @@
     <meta charset="UTF-8">
     <title>@yield('title')</title>
 
-    <link rel="stylesheet" href="/node_modules/gentelella/vendors/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="/node_modules/gentelella/vendors/font-awesome/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="/node_modules/gentelella/vendors/animate.css/animate.min.css"/>
-    <link rel="stylesheet" href="/node_modules/gentelella/build/css/custom.min.css"/>
-
+    <link rel="stylesheet" href="{{asset('/vendor/css/lib.min.css')}}"/>
     <link rel="stylesheet" href="{{asset('/css/app.min.css')}}"/>
 
     @yield('style')
@@ -69,22 +65,59 @@
 
     <div class="right_col" role="main">
         <div class="row tile_count" style="margin-top: 55px;">
-            @if (!empty($flash))
-                <div class="alert alert-success" role="alert">
-                    <p>{{$flash}}</p>
-                </div>
-            @endif
-
             @yield('content')
 
         </div>
     </div>
 </div>
 
-<script src="/node_modules/gentelella/vendors/jquery/dist/jquery.min.js"></script>
-<script src="/node_modules/gentelella/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="/node_modules/gentelella/build/js/custom.min.js"></script>
+<script src="{{asset('/vendor/js/lib.min.js')}}"></script>
+
+<!-- jquery.inputmask -->
+<script>
+    $(document).ready(function () {
+        $(":input").inputmask();
+    });
+
+    function triggerEvent(element, event) {
+        var evt;
+
+        if (document.createEvent) {
+            evt = document.createEvent("HTMLEvents");
+            evt.initEvent(event, true, true);
+            return element.dispatchEvent(evt);
+        } else {
+            evt = document.createEventObject();
+            return element.fireEvent("on" + event, evt)
+        }
+    }
+</script>
+<!-- /jquery.inputmask -->
+
 <script src="{{asset('/js/app.min.js')}}"></script>
+
+
+@if (!empty($flash))
+    <script>
+        new PNotify({
+            title: 'INFO',
+            text: '{!!$flash!!}',
+            type: 'success',
+            styling: 'bootstrap3'
+        });
+    </script>
+@endif
+
+@if (!empty($flash_error))
+    <script>
+        new PNotify({
+            title: 'ERROR',
+            text: '{!!$flash_error!!}',
+            type: 'error',
+            styling: 'bootstrap3'
+        });
+    </script>
+@endif
 
 @yield('script')
 </body>
