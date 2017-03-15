@@ -57,4 +57,11 @@ class UsersRepositoryTest extends TestCase
         $this->assertEquals($this->repo->delete($id), 1);
         $this->assertEquals($this->repo->get($id), NULL);
     }
+
+    public function testCreateEntity()
+    {
+        $model = $this->repo->createEntity();
+        $this->assertEquals($model->id, null);
+        $this->assertEquals($model instanceof \Domain\Models\User, true);
+    }
 }
