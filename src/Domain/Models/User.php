@@ -20,6 +20,7 @@ class User extends Model
     public $name;
 
     /**
+     * @param $data
      * @return array
      */
     public static function passwordHash($data)

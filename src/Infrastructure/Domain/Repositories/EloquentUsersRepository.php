@@ -34,9 +34,9 @@ class EloquentUsersRepository implements UsersRepository
         /** @var EloquentUser $result */
         if ($result = $eloquent::where('mail', $mail)->first()) {
             return $result->toDomain();
-        } else {
-            return null;
         }
+
+        return null;
     }
 
 }

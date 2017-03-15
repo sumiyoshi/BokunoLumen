@@ -28,19 +28,19 @@ class Controller extends BaseController
         $fileLoader = new Translation\FileLoader($filesystem, resource_path('lang'));
         $translator = new Translation\Translator($fileLoader, env('APP_LOCALE'));
         $factory = new Validation\Factory($translator);
-        $v = $factory->make($data, $rules);
+        $validation = $factory->make($data, $rules);
 
-        if ($v->fails()) {
+        if ($validation->fails()) {
             return [
                 false,
-                $v->messages()->toArray()
-            ];
-        } else {
-            return [
-                true,
-                $v->getData()
+                $validation->messages()->toArray()
             ];
         }
+
+        return [
+            true,
+            $validation->getData()
+        ];
     }
 
 }

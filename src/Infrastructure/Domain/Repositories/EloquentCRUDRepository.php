@@ -19,9 +19,9 @@ trait EloquentCRUDRepository
         /** @var EloquentModel $result */
         if ($result = $eloquent::find($id)) {
             return $result->toDomain();
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     /**
@@ -129,9 +129,9 @@ trait EloquentCRUDRepository
             }
 
             return $list;
-        } else {
-            return [];
         }
+
+        return [];
     }
 
 }

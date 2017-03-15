@@ -31,15 +31,8 @@ class UsersService extends Service implements \App\Services\UsersService
      */
     public function save(array $data, $id = null)
     {
-        if (is_null($id)) {
-            /** @var User $model */
-            $model = $this->repo->create(User::passwordHash($data));
-        } else {
-            /** @var User $model */
-            $model = $this->repo->update($id, User::passwordHash($data));
-        }
-
-        return $model;
+        $data = User::passwordHash($data);
+        return (is_null($id)) ? $this->repo->create($data) : $this->repo->update($id, $data);
     }
 
 }
