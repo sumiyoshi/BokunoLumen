@@ -43,11 +43,7 @@ trait CRUDService
      */
     public function delete($id)
     {
-        if ($this->repo->delete($id) === 1) {
-            return true;
-        }
-
-        return false;
+        return $this->repo->delete($id);
     }
 
     /**

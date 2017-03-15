@@ -87,12 +87,7 @@ trait EloquentCRUDRepository
             $eloquent->{$key} = $val;
         }
 
-        /** @var EloquentModel $model */
-        if ($eloquent->save()) {
-            return $eloquent->toDomain();
-        } else {
-            return null;
-        }
+        return ($eloquent->save()) ?  $eloquent->toDomain() : null;
     }
 
     /**

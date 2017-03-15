@@ -33,11 +33,6 @@ class UsersServiceTest extends TestCase
         $this->assertEquals(count($users), 2);
     }
 
-    public function testDelete()
-    {
-        $this->assertEquals($this->service->delete(1), true);
-    }
-
     public function testCreateEntity()
     {
         $model = $this->service->createEntity();
@@ -45,7 +40,7 @@ class UsersServiceTest extends TestCase
         $this->assertEquals($model instanceof \Domain\Models\User, true);
     }
 
-    public function testSave()
+    public function testSaveAndDelete()
     {
         $data = [
             'name' => 'TestUser3',
@@ -59,5 +54,7 @@ class UsersServiceTest extends TestCase
         $data['name'] = 'update';
         $user = $this->service->save($data, $user->id);
         $this->assertEquals($user->name, 'update');
+
+        $this->assertEquals($this->service->delete($user->id), true);
     }
 }
