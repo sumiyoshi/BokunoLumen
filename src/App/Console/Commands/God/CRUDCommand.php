@@ -34,10 +34,6 @@ class CRUDCommand extends Command
         $columns = $this->getColumns($table);
         $table_name = $this->camel($table);
 
-        $table = "tests";
-        $table_name = "Tests";
-        $model = "Test";
-
         $files = [
             app()->basePath("src/App/Services/{$table_name}Service.php") => $this->makeServiceInterface($model, $table_name),
             app()->basePath("src/Domain/Services/{$table_name}Service.php") => $this->makeService($table_name),
