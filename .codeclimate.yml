@@ -1,0 +1,8 @@
+exclude_paths:
+- "tests/"
+- "storage/"
+- "resources/"
+- "public/"
+- "database/"
+- "config/"
+- "bootstrap/"
