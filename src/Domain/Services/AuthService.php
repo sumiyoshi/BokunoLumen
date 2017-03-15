@@ -24,7 +24,7 @@ class AuthService extends Service implements \App\Services\AuthService
     /**
      * @param $mail
      * @param $password
-     * @return null
+     * @return null|int
      */
     public function login($mail, $password)
     {

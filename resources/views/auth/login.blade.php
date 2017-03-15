@@ -4,10 +4,7 @@
     <meta charset="UTF-8">
     <title>Login</title>
 
-    <link rel="stylesheet" href="/node_modules/gentelella/vendors/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="/node_modules/gentelella/vendors/font-awesome/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="/node_modules/gentelella/vendors/animate.css/animate.min.css"/>
-    <link rel="stylesheet" href="/node_modules/gentelella/build/css/custom.min.css"/>
+    <link rel="stylesheet" href="{{asset('/vendor/css/lib.min.css')}}"/>
 
 </head>
 <body class="login">

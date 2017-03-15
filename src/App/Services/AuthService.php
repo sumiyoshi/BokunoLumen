@@ -8,7 +8,7 @@ interface AuthService
     /**
      * @param $mail
      * @param $password
-     * @return null
+     * @return null|int
      */
     public function login($mail, $password);
 }

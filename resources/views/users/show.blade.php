@@ -4,13 +4,11 @@
     Show
 @endsection
 
-
 @section('content')
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
             <div class="x_title">
-                <h2>User Show </h2>
-
+                <h2>Show </h2>
                 <div class="text-right">
                     <form action="{{route('users_delete',['id' => $user->id])}}" method="post">
                         <input type="submit" value="Delete" class="btn btn-danger">
@@ -57,5 +55,4 @@
             </div>
         </div>
     </div>
-
 @endsection

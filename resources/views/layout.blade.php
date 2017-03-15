@@ -11,91 +11,80 @@
 </head>
 <body class="nav-md">
 
-<div class="container body">
-    <div class="col-md-3 left_col">
-        <div class="left_col scroll-view">
-            <div class="navbar nav_title" style="border: 0;">
-                <a href="{{route('home')}}" class="site_title"><i class="fa fa-crosshairs"></i> <span>Gentelella Alela!</span></a>
+<div class="container body" id="app">
+    <div class="main_container">
+
+        <div class="col-md-3 left_col">
+            <div class="left_col scroll-view">
+                <div class="navbar nav_title">
+                    <a href="{{route('home')}}" class="site_title">
+                        <span>Bokuno Lumen!</span></a>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <!-- sidebar menu -->
+                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                    <div class="menu_section">
+
+                        <ul class="nav side-menu">
+                            <li><a><i class="fa fa-user"></i> User <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="{{route('users')}}">List</a></li>
+                                    <li><a href="{{route('users_new')}}">New</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+                <!-- /sidebar menu -->
             </div>
+        </div>
 
-            <div class="clearfix"></div>
-            <br>
-
-            <!-- sidebar menu -->
-            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-                <div class="menu_section">
-                    <ul class="nav side-menu">
-                        <li><a><i class="fa fa-bars"></i> User <span class="fa fa-chevron-down"></span></a>
-                            <ul class="nav child_menu">
-                                <li><a href="{{route('users')}}">List</a></li>
-                                <li><a href="{{route('users_new')}}">New</a></li>
+        <div class="top_nav">
+            <div class="nav_menu">
+                <nav>
+                    <div class="nav toggle">
+                        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                    </div>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="">
+                            <a href="javascript:void(0);"
+                               class="user-profile dropdown-toggle"
+                               data-toggle="dropdown"
+                               aria-expanded="false">
+                                {{ $login_user->name }}
+                                <span class=" fa fa-angle-down"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                <li>
+                                    <a href="{{route('logout')}}">
+                                        <i class="fa fa-sign-out pull-right"></i>
+                                        Log Out
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
-                </div>
+                </nav>
             </div>
-            <!-- /sidebar menu -->
         </div>
-    </div>
 
-    <div class="top_nav">
-        <div class="nav_menu">
-            <nav>
-                <div class="nav toggle">
-                    <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                </div>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="">
-                        <a href="javascript:void(0);" class="user-profile dropdown-toggle" data-toggle="dropdown"
-                           aria-expanded="false">
-                            {{ $login_user->name }}
-                            <span class=" fa fa-angle-down"></span>
-                        </a>
-                        <ul class="dropdown-menu dropdown-usermenu pull-right">
-                            <li><a href="{{route('logout')}}">
-                                    <i class="fa fa-sign-out pull-right"></i>
-                                    Log Out</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
+        <div class="right_col" role="main">
+            <div class="row tile_count" style="margin-top: 55px;">
+                @yield('content')
+            </div>
         </div>
-    </div>
 
-    <div class="right_col" role="main">
-        <div class="row tile_count" style="margin-top: 55px;">
-            @yield('content')
-
-        </div>
+        <footer>
+            <div class="pull-right">Bokuno Lumen by SumiLab.</div>
+        </footer>
     </div>
 </div>
 
 <script src="{{asset('/vendor/js/lib.min.js')}}"></script>
-
-<!-- jquery.inputmask -->
-<script>
-    $(document).ready(function () {
-        $(":input").inputmask();
-    });
-
-    function triggerEvent(element, event) {
-        var evt;
-
-        if (document.createEvent) {
-            evt = document.createEvent("HTMLEvents");
-            evt.initEvent(event, true, true);
-            return element.dispatchEvent(evt);
-        } else {
-            evt = document.createEventObject();
-            return element.fireEvent("on" + event, evt)
-        }
-    }
-</script>
-<!-- /jquery.inputmask -->
-
 <script src="{{asset('/js/app.min.js')}}"></script>
-
 
 @if (!empty($flash))
     <script>
@@ -118,6 +107,7 @@
         });
     </script>
 @endif
+
 
 @yield('script')
 </body>

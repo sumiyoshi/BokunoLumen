@@ -23,7 +23,7 @@ php -S localhost:8000 -t ./public
 ## test
 
 ```
-php vendor/bin/phpunit tests/
+php vendor/bin/phpunit --testdox tests/
 ```
 
 ## npm

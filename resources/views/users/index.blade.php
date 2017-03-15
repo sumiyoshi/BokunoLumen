@@ -4,14 +4,11 @@
     List
 @endsection
 
-
 @section('content')
-
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
             <div class="x_title">
-                <h2>Users List</h2>
-
+                <h2>List</h2>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
@@ -38,10 +35,7 @@
                     @endforeach
                     </tbody>
                 </table>
-
             </div>
         </div>
     </div>
-
-
 @endsection

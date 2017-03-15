@@ -16,7 +16,6 @@
     </div>
 </div>
 
-
 <div class="form-group">
     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="user_password">Password
     </label>
