@@ -2,14 +2,9 @@
 
 namespace App\Console\Commands\God;
 
-use App\Services\IgContentsService;
-use App\Services\JobsService;
-use App\Services\TagsService;
-use Domain\Models\Job;
 use Illuminate\Console\Command;
-use App\Services\IgService;
 
-class AutoUpdateTagsCommand extends Command
+class CRUDCommand extends Command
 {
     /**
      * @var string
