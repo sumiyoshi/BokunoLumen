@@ -9,3 +9,8 @@ before_script:
 
 script:
   - vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+
+ratings:
+  paths:
+  - src/**
+  - "**.php"
