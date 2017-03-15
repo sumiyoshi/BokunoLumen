@@ -4,7 +4,8 @@
 [![Code Climate](https://codeclimate.com/github/sumiyoshi/BokunoLumen/badges/gpa.svg)](https://codeclimate.com/github/sumiyoshi/BokunoLumen)
 [![Issue Count](https://codeclimate.com/github/sumiyoshi/BokunoLumen/badges/issue_count.svg)](https://codeclimate.com/github/sumiyoshi/BokunoLumen)
 
-##install
+
+## install
 
 ```
 php composer.phar install
