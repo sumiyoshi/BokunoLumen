@@ -86,7 +86,7 @@ $app->routeMiddleware([
 */
 
 $app->group(['namespace' => 'App\Http\Controllers'], function ($app) {
-    require __DIR__ . '/../src/App/web.php';
+    require $app->basePath('src/App/web.php');
 });
 
 /*
