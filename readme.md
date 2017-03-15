@@ -1,6 +1,6 @@
 # BokunoLumen
 
-
+[![Build Status](https://travis-ci.org/sumiyoshi/BokunoLumen.svg?branch=master)](https://travis-ci.org/sumiyoshi/BokunoLumen)
 [![Code Climate](https://codeclimate.com/github/sumiyoshi/BokunoLumen/badges/gpa.svg)](https://codeclimate.com/github/sumiyoshi/BokunoLumen)
 [![Issue Count](https://codeclimate.com/github/sumiyoshi/BokunoLumen/badges/issue_count.svg)](https://codeclimate.com/github/sumiyoshi/BokunoLumen)
 
