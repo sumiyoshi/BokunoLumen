@@ -34,13 +34,20 @@ class CRUDCommand extends Command
         $columns = $this->getColumns($table);
         $table_name = $this->camel($table);
 
+        $table = "tests";
+        $table_name = "Tests";
+        $model = "Test";
+
         $files = [
             app()->basePath("src/App/Services/{$table_name}Service.php") => $this->makeServiceInterface($model, $table_name),
             app()->basePath("src/Domain/Services/{$table_name}Service.php") => $this->makeService($table_name),
             app()->basePath("src/Domain/Repositories/{$table_name}Repository.php") => $this->makeRepositoryInterface($model, $table_name),
             app()->basePath("src/Infrastructure/Domain/Repositories/Eloquent{$table_name}Repository.php") => $this->makeRepository($model, $table_name),
             app()->basePath("src/Infrastructure/Domain/Models/Eloquent{$model}.php") => $this->makeEloquentModel($model, $table),
-            app()->basePath("src/Domain/Models/{$model}.php") => $this->makeModel($model, $columns)
+            app()->basePath("src/Domain/Models/{$model}.php") => $this->makeModel($model, $columns),
+
+            app()->basePath("tests/repositories/{$table_name}RepositoryTest.php") => $this->makeTestRepository($table_name),
+            app()->basePath("tests/services/{$table_name}ServiceTest.php") => $this->makeTestService($table_name)
         ];
 
         $this->make($files);
@@ -329,4 +336,107 @@ class Eloquent{$model} extends EloquentModel
 }
 EOD;
     }
+
+    private function makeTestService($table_name)
+    {
+        return <<<EOD
+<?php
+
+use App\Services\\{$table_name}Service;
+use Illuminate\Support\Facades\Artisan;
+
+class {$table_name}ServiceTest extends TestCase
+{
+
+    /**
+     * @var {$table_name}Service
+     */
+    protected \$service;
+
+    public function setUp()
+    {
+        parent::setUp();
+
+        Artisan::call('migrate:refresh');
+        Artisan::call('db:seed');
+
+        \$this->service = \$this->app->make({$table_name}Service::class);
+    }
+
+    public function testGet()
+    {
+        //
+    }
+
+    public function testGetList()
+    {
+        //
+    }
+
+    public function testCreateEntity()
+    {
+        //
+    }
+
+    public function testSaveAndDelete()
+    {
+        //
+    }
+}
+EOD;
+    }
+
+    private function makeTestRepository($table_name)
+    {
+        return <<<EOD
+<?php
+
+use Domain\Repositories\\{$table_name}Repository;
+use Illuminate\Support\Facades\Artisan;
+
+class {$table_name}RepositoryTest extends TestCase
+{
+    /**
+     * @var {$table_name}Repository
+     */
+    protected \$repo;
+
+    public function setUp()
+    {
+        parent::setUp();
+
+        Artisan::call('migrate:refresh');
+        Artisan::call('db:seed');
+
+        \$this->repo = \$this->app->make({$table_name}Repository::class);
+    }
+
+    public function testGet()
+    {
+        //
+    }
+
+    public function testGetByMail()
+    {
+        //
+    }
+
+    public function testList()
+    {
+        //
+    }
+
+    public function testCreateUpdateDelete()
+    {
+        //
+    }
+
+    public function testCreateEntity()
+    {
+        //       
+    }
+}
+EOD;
+    }
+
 }
