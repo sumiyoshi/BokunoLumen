@@ -1,1 +1,1 @@
-CREATE DATABASE bokuno_lumen;
+CREATE DATABASE bokuno_lumen_test;
