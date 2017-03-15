@@ -7,8 +7,8 @@ before_script:
   - curl -s http://getcomposer.org/installer | php
   - php composer.phar install --dev --prefer-source
   - mysql -uroot < .travis/schema.sql
-  - cp .env.test .env
+  - cp .env. test .env
 
 script:
   - mkdir -p build/logs
-  - phpunit --configuration tests
+  - phpunit tests
