@@ -8,3 +8,4 @@ exclude_paths:
 - "database/"
 - "config/"
 - "bootstrap/"
+- "src/App/Console/Commands/God"
