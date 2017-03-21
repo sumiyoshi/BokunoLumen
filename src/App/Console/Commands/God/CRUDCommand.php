@@ -248,6 +248,12 @@ interface {$table_name}Repository
     public function get(\$id);
 
     /**
+     * @param array $options
+     * @return int
+     */
+    public function getCountList(array $options);
+
+    /**
      * @param \$options
      *
      * @return {$model}[]
@@ -412,7 +418,7 @@ class {$table_name}RepositoryTest extends TestCase
         //
     }
 
-    public function testGetByMail()
+    public function testGetCountList()
     {
         //
     }
