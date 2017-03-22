@@ -2,8 +2,8 @@
 
 namespace App\Console;
 
-use App\Console\Commands\God\CRUDCommand;
 use Illuminate\Console\Scheduling\Schedule;
+use Infrastructure\App\Console\Commands\CRUDCommand;
 use Laravel\Lumen\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel

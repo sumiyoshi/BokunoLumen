@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands\God;
+namespace Infrastructure\App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
@@ -10,7 +10,7 @@ class CRUDCommand extends Command
     /**
      * @var string
      */
-    protected $signature = 'god:crud {table} {model}';
+    protected $signature = 'make:crud {table} {model}';
 
     /**
      * @var string
@@ -196,6 +196,11 @@ interface {$table_name}Service
      * @return {$model}
      */
     public function save(array \$data, \$id = null);
+    
+    /**
+     * @return array
+     */
+    public function getErrors();
 }
 EOD;
     }
@@ -246,6 +251,12 @@ interface {$table_name}Repository
      * @return {$model}
      */
     public function get(\$id);
+
+    /**
+     * @param array \$options
+     * @return int
+     */
+    public function getCountList(array \$options);
 
     /**
      * @param \$options
@@ -412,7 +423,7 @@ class {$table_name}RepositoryTest extends TestCase
         //
     }
 
-    public function testGetByMail()
+    public function testCountList()
     {
         //
     }
