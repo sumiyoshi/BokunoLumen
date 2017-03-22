@@ -13,17 +13,17 @@ class Navigation
     /**
      * @var int
      */
-    public $current_page;
+    public $currentPage;
 
     /**
      * @var int
      */
-    public $num_pages;
+    public $numPages;
 
     /**
      * @var array
      */
-    public $page_range;
+    public $pageRange;
 
     /**
      * @var int|bool
@@ -37,17 +37,17 @@ class Navigation
 
     public function __construct(
         $count,
-        $current_page,
-        $num_pages,
-        $page_range,
+        $currentPage,
+        $numPages,
+        $pageRange,
         $prev,
         $next
     )
     {
         $this->count = $count;
-        $this->current_page = $current_page;
-        $this->num_pages = $num_pages;
-        $this->page_range = $page_range;
+        $this->currentPage = $currentPage;
+        $this->numPages = $numPages;
+        $this->pageRange = $pageRange;
         $this->prev = $prev;
         $this->next = $next;
     }
