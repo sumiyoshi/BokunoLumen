@@ -35,7 +35,7 @@ if (!function_exists('resources')) {
     function resources(\Laravel\Lumen\Application $app, $prefix, array $except = [])
     {
         $app->group(["prefix" => "{$prefix}"], function () use ($app, $prefix, $except) {
-            $controller = ucfirst($prefix) . 'Controller';
+            $controller = ucfirst(strtr(ucwords(strtr($prefix, ['_' => ' '])), [' ' => ''])) . 'Controller';
 
             // index
             if (array_search('index', $except) === false) {
