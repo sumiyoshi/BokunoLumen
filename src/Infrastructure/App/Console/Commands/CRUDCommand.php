@@ -423,7 +423,11 @@ class {$table_name}RepositoryTest extends TestCase
         //
     }
 
+<<<<<<< HEAD:src/Infrastructure/App/Console/Commands/CRUDCommand.php
     public function testCountList()
+=======
+    public function testGetCountList()
+>>>>>>> 10a37b56c3ebd8144bb950c295d631d9023c7a16:src/App/Console/Commands/God/CRUDCommand.php
     {
         //
     }
