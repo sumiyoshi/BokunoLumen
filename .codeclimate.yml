@@ -12,10 +12,13 @@ engines:
         enabled: false
   scss-lint:
     enabled: true
+  eslint:
+    enabled: true
 ratings:
   paths:
   - "**.php"
   - "**.scss"
+  - "**.js"
 exclude_paths:
 - "tests/"
 - "storage/"
