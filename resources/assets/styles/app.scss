@@ -1,34 +1,5 @@
 $danger-color: #843534;
-
-[v-cloak] {
-  display: none;
-}
-
-.list-item {
-  display: inline-block;
-  margin-right: 10px;
-}
-
-.list-enter-active {
-  transition: all 1s;
-}
-
-.list-leave-active {
-  transition: all .1s;
-}
-
-.list-enter, .list-leave-to {
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s
-}
-
-.fade-enter, .fade-leave-to {
-  opacity: 0
-}
+$gray-color: #555;
 
 .error-massage {
   padding: 0;
@@ -45,68 +16,12 @@ $danger-color: #843534;
   padding: 6px 12px;
   font-size: 14px;
   line-height: 1.42857143;
-  color: #555;
+  color: $gray-color;
 }
 
 .main_container {
   .left_col, .right_col {
     height: 100%;
   }
-
-  .loader-bg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 1;
-  }
-
-  .loader {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    text-align: center;
-    font-size: 14px;
-    color: #fff;
-    z-index: 2;
-  }
-
-  .tag:after {
-    border-left: none;
-  }
-
-  #content {
-
-    .ig-contents {
-      margin-bottom: 30px;
-    }
-
-    .tile-stats {
-      margin-bottom: 4px;
-      height: 160px;
-
-      p {
-         margin-top: 0;
-      }
-
-      .icon {
-        top: 30px;
-      }
-
-      .image {
-        padding: 10px;
-      }
-
-      .details {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        padding: 5px;
-      }
-    }
-  }
-
 }
 
