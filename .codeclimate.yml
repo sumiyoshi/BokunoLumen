@@ -4,7 +4,11 @@ engines:
     checks:
       Controversial/CamelCasePropertyName:
         enabled: false
+      Controversial/CamelCaseVariableName:
+        enabled: false
       Naming/ShortVariable:
+        enabled: false
+      CleanCode/StaticAccess:
         enabled: false
 ratings:
   paths:
