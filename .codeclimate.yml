@@ -1,5 +1,18 @@
-languages:
-  PHP: true
+engines:
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - php
+  fixme:
+    enabled: true
+  phpmd:
+    enabled: true
+    checks:
+        Controversial/CamelCasePropertyName:
+          enabled: false
+        Naming/ShortVariable:
+          enabled: false
 exclude_paths:
 - "tests/"
 - "storage/"
