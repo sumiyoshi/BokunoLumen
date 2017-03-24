@@ -12,21 +12,6 @@ abstract class Model
     public $id;
 
     /**
-     * @var string
-     */
-    public $created_at;
-
-    /**
-     * @var string
-     */
-    public $updated_at;
-
-    /**
-     * @var string
-     */
-    public $deleted_at;
-
-    /**
      * @param array $data
      * @return $this
      */
