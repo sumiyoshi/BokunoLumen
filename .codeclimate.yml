@@ -10,13 +10,17 @@ engines:
         enabled: false
       CleanCode/StaticAccess:
         enabled: false
+  scss-lint:
+    enabled: true
 ratings:
   paths:
   - "**.php"
+  - "**.scss"
 exclude_paths:
 - "tests/"
 - "storage/"
-- "resources/"
+- "resources/lang/"
+- "resources/views/"
 - "public/"
 - "database/"
 - "config/"
