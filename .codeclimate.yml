@@ -1,13 +1,5 @@
 languages:
   PHP: true
-engines:
-  phpmd:
-    enabled: true
-    checks:
-      Naming/ShortVariable:
-        enabled: false
-      Controversial/CamelCasePropertyName:
-        enabled: false
 exclude_paths:
 - "tests/"
 - "storage/"
