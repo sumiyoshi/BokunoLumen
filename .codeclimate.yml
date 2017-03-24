@@ -22,6 +22,8 @@ ratings:
 exclude_paths:
 - "tests/"
 - "storage/"
+- "resources/assets/gulpfile.js"
+- "resources/assets/webpack.config.js"
 - "resources/lang/"
 - "resources/views/"
 - "public/"
