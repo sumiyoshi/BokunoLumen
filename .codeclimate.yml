@@ -1,5 +1,14 @@
-languages:
-  PHP: true
+engines:
+  phpcodesniffer:
+    enabled: true
+    config:
+      file_extensions: "php"
+      standard: "PSR1,PSR2"
+  phpmd:
+    enabled: true
+    checks:
+      Naming/ShortVariable:
+        enabled: false
 exclude_paths:
 - "tests/"
 - "storage/"
@@ -9,9 +18,4 @@ exclude_paths:
 - "config/"
 - "bootstrap/"
 - "src/Infrastructure/App/Console/Commands/"
-engines:
-  phpmd:
-    enabled: true
-      checks:
-        Naming/ShortVariable:
-          enabled: false
+
