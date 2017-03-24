@@ -1,8 +1,9 @@
-languages:
-  PHP: true
 engines:
   phpmd:
     enabled: true
+ratings:
+  paths:
+  - "**.php"
 exclude_paths:
 - "tests/"
 - "storage/"
