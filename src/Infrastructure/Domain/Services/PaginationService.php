@@ -44,7 +44,7 @@ trait PaginationService
      * @param $limit
      * @param $page
      * @param $count
-     * @return bool
+     * @return bool|int
      */
     protected function getNextPage($limit, $page, $count)
     {
