@@ -1,6 +1,11 @@
 engines:
   phpmd:
     enabled: true
+    checks:
+      Controversial/CamelCasePropertyName:
+        enabled: false
+      Naming/ShortVariable:
+        enabled: false
 ratings:
   paths:
   - "**.php"
