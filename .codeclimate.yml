@@ -3,11 +3,6 @@ languages:
 engines:
   phpmd:
     enabled: true
-    checks:
-        Controversial/CamelCasePropertyName:
-          enabled: false
-        Naming/ShortVariable:
-          enabled: false
 exclude_paths:
 - "tests/"
 - "storage/"
