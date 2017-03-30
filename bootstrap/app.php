@@ -68,6 +68,7 @@ $app->extend("session", function ($obj) use ($app) {
     $app->configure("session");
     return $obj;
 });
+
 $app->alias("session", \Illuminate\Session\SessionManager::class);
 $app->register(\Illuminate\Session\SessionServiceProvider::class);
 $app->middleware([
