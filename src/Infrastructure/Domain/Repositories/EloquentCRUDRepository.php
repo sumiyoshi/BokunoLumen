@@ -28,7 +28,7 @@ trait EloquentCRUDRepository
      * @param array $options
      * @return int
      */
-    public function getCountList(array $options)
+    public function countList(array $options)
     {
         $eloquent = $this->eloquent;
         return $eloquent::condition($options)->count();
