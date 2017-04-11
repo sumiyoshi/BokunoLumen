@@ -13,6 +13,12 @@ interface UsersRepository
     public function get($id);
 
     /**
+     * @param array $options
+     * @return int
+     */
+    public function countList(array $options);
+
+    /**
      * @param $options
      *
      * @return User[]
