@@ -256,7 +256,7 @@ interface {$table_name}Repository
      * @param array \$options
      * @return int
      */
-    public function getCountList(array \$options);
+    public function countList(array \$options);
 
     /**
      * @param \$options
