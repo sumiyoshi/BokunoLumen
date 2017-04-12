@@ -20,10 +20,24 @@ trait PaginationService
             $count,
             $page,
             $num_pages,
-            range(1, $num_pages),
+            $this->getRange(1, $num_pages),
             ($page <= 1) ? false : $page - 1,
             ($page >= $num_pages) ? false : $page + 1
         );
+    }
+    
+    /**
+     * @param $start
+     * @param $end
+     * @return array
+     */
+    private function getRange($start, $end)
+    {
+        if ($start >= $end) {
+            return [1];
+        }
+
+        return range($start, $end);
     }
 
     /**
