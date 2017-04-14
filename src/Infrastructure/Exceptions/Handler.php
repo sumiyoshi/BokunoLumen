@@ -36,19 +36,40 @@ class Handler extends ExceptionHandler
         parent::report($e);
     }
 
-    /**
-     * Render an exception into an HTTP response.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $e
-     * @return \Illuminate\Http\Response
-     */
-    public function render($request, Exception $e)
+    protected function decorate($content, $css)
     {
-        if (env('APP_DEBUG', false) === false) {
-            return view('error');
+        if (env('APP_DEBUG', false) === true) {
+            return parent::decorate($content, $css);
         }
 
-        return parent::render($request, $e);
+        return <<<EOF
+<html lang="en"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>ERROR</title>
+
+    <link rel="stylesheet" href="/vendor/css/lib.min.css">
+</head>
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <!-- page content -->
+        <div class="col-md-12">
+            <div class="col-middle">
+                <div class="text-center text-center">
+                    <h1 class="error-number">404</h1>
+                </div>
+            </div>
+        </div>
+        <!-- /page content -->
+    </div>
+</div>
+</body></html>
+EOF;
     }
 }
