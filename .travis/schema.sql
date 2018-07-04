@@ -1,1 +1,0 @@
-CREATE DATABASE bokuno_lumen_test;
